@@ -86,28 +86,7 @@ app.get("/", function(req, res) {
   res.redirect("/index");
 });
 
-app.post('/rate', function(req, res){
-    console.log(req.body);
-
-     help.sendRating(req.body, function(err, results){
-        if(err){
-            console.log("err with sending a rating: " + err);
-        } else{
-            console.log("success sending rating, now posting");
-            help.postNewRating(results, function(err, results){
-                if(err) { 
-                    console.log("Error posting rating: " + err)
-                } else{
-                    console.log("success posting rating");
-                }
-            })
-            
-         }
-         res.redirect("/post");
-    });
-
-});
-
+//change this to be plug in access code
 app.get("/index", function(req, res) {
     help.getTop10Posts(function(err, results){
         if(err){
@@ -141,29 +120,9 @@ app.post('/upload', function(req, res) {
 
     var uploadpath = __dirname + name;
     var values = [[class_name, description, semester, professor_name, notes, name]];
-    var sql = "INSERT INTO ratingTable (classname, description, semester, profname, notes, filename) VALUES ? ";
+    var sql = "INSERT INTO surveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES ? ";
 
 
-    if (type == 'application/pdf') {
-      file.mv(uploadpath, function(err) {
-        if (err) {
-          console.log("File Upload Failed", name, err);
-          res.send("Error Occured!")
-        } else {
-          con.query(sql, [values], function (err, result) {
-            if (err) throw err;
-            console.log("Number of records inserted: " + result.affectedRows);
-          });
-          console.log("File Uploaded", name);
-          res.sendFile(path.join(__dirname + '/submit.html'));
-        }
-      });
-    } else {
-      res.send('Unsupported filetype, pdf only.')
-    }
-  } else {
-    res.send("No File selected!");
-    res.end();
   }
 });
 

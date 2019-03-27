@@ -10,6 +10,13 @@ var connection = mysql.createConnection({
 });
 
 var db = "testdb";
+var tableName = "surveyList";
+var creatorName = "creatorName VARCHAR(40) NOT NULL";
+var creationCode = "creationCode VARCHAR(100) NOT NULL";
+var surveyName = "surveyName VARCHAR(40) NOT NULL";
+var surveyOrTest = "surveyOption VARCHAR(10) NOT NULL"
+var questions = "questionList JSON NOT NULL";
+var responses = "responseList JSON NOT NULL";
 
 connection.connect(function(err) {
   if (err) {
@@ -21,29 +28,13 @@ connection.connect(function(err) {
 });
 
 /*STEP 1: USE THIS TO CREATE NEW TEST RESOURCE TABEL*/
-connection.query('CREATE table ratingTable(className VARCHAR(40) NOT NULL, description VARCHAR(40) NOT NULL, semester VARCHAR(40) NOT NULL, profName VARCHAR(40) NOT NULL, notes VARCHAR(225) NOT NULL, filename  VARCHAR(100) NOT NULL, rating DOUBLE NOT NULL, numRating INT NOT NULL)', function(err, results, fields){
+connection.query('CREATE table '+tableName+'('+creatorName+', '+creationCode+', '+surveyName+', '+surveyOrTest+', '+questions+', '+responses+')', function(err, results, fields){
 	if(err){
 		console.log(err);
 	} else {
 		console.log("success!");
 	}
 });
-
-
-connection.query('ALTER TABLE ratingTable ALTER COLUMN rating SET DEFAULT 0', function(err, results, fields){
- if(err){
-   console.log(err);
- } else {
-   console.log("success!");
- }
-});
-
-connection.query('ALTER TABLE ratingTable MODIFY COLUMN rating DOUBLE NOT NULL;', function(err, results, fields){
- if(err){
-   console.log(err);
- } else {
-   console.log("success!");
- }
 
 
 //THIS CAN BE USED TO DELETE DATA FROM TABLE IF NEEDED

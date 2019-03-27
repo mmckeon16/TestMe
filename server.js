@@ -5,6 +5,7 @@ const exphbs = require("express-handlebars");
 var app = express();
 var path = require('path');
 var help = require('./js/getFiles');
+var questions = require('./js/addQuestions');
 
 var nodeMailer = require('nodemailer');
 
@@ -107,23 +108,17 @@ app.get("/index", function(req, res) {
 app.post('/upload', function(req, res) {
 
   console.log("Body: " + JSON.stringify(req.body));
-  if (req.files.upfile) {
-    var date = Date.now()
-    var file = req.files.upfile;
-    var name = "/resource/" + date + ".pdf";
-    var type = file.mimetype;
-    var class_name = req.body.class_name;
-    var description = req.body.description;
-    var semester = req.body.semester;
-    var professor_name = req.body.professor_name;
-    var notes = req.body.notes;
+  var creatorName = req.body.creatorName;
+  var creationCode = help.createCode();
+  var testName = req.body.testName;
+  var questionList = help.createQuestions(req.body.questions);
+  var responseList = help.createResponseList(req.body.questions);
+  var surveyOption = req.body.surveyOption;
+  var description = req.body.description;
 
-    var uploadpath = __dirname + name;
-    var values = [[class_name, description, semester, professor_name, notes, name]];
-    var sql = "INSERT INTO surveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES ? ";
+  var values = [[creatorName, creationCode, testName, questionList, responseList, surveyOption]];
+  var sql = "INSERT INTO surveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES ? ";
 
-
-  }
 });
 
 app.get('*', function(req, res) {

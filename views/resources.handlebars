@@ -1,0 +1,45 @@
+
+<!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-preview">
+              <h2 class="post-title">
+                Here are some Tests! <!--make second column for surveys-->
+              </h2>
+          </div>
+          <hr>
+
+          {{#each results}}
+          <div class="post-preview">
+            <a href={{this.filename}}>
+              <h2 class="post-title">
+                {{this.className}} {{this.description}}
+              </h2>
+            </a>
+            From {{this.profName}} during {{this.semester}}
+            <br>
+            Rating: {{this.rating}}
+            <br>
+            Number of Ratings: {{this.numRating}}
+              
+            <p class="post-meta">
+              Notes: {{this.notes}}
+            </p>
+          </div>
+          <br>
+          <hr>
+
+          {{else}}
+            <p class="post-preview">
+            There are no tests to view right now
+            </p>  
+          {{/each}}
+
+          </div>
+          <hr>
+          <!-- Pager -->
+        </div>
+      </div>
+    </div>
+    <hr>

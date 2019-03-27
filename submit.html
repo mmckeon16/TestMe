@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TestMe</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+   <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">TestMe</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/index">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/post">Resources</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="submit.html">Submit</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+              <h1>Submission Form</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>Upload exams and quizzes here. Please make sure to omit any names, signatures, or any other identifying information from the file.</p>
+          <!-- Submission Form -->
+          <form class="fileupload" action="/upload" method="POST" enctype="multipart/form-data">
+            <input type = 'hidden' name = "rating" value = 0>
+            <input type = 'hidden' name = "numRating" value = 0>
+
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Class Name</label>
+                <input type="text"  maxlength="40" class="form-control" placeholder="Class Name (eg. SSW 215)" name="class_name" required data-validation-required-message="Please enter the class name.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Description</label>
+                <input type="text" maxlength="40" class="form-control" placeholder="Description (eg. Exam 3)" name="description" required data-validation-required-message="Please enter a description.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Semester</label>
+                <input type="text" maxlength="40" class="form-control" placeholder="Semester (eg. Spring 2018)" name="semester" required data-validation-required-message="Please enter the semester.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Professor</label>
+                <input type="text" maxlength="40"class="form-control" placeholder="Professor Name" name="professor_name" required data-validation-required-message="Please enter the professor.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Notes</label>
+                <textarea rows="3" maxlength="225" class="form-control" placeholder="Notes" name="notes" required data-validation-required-message="Please enter additional notes."></textarea>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <br>
+            <!--File input -->
+            <div class="control-group">
+                <label>File: Size limited to 2.5MB, PDF's only.</label>
+                <br>
+                <input type="file" name="upfile">
+                <br><br>
+                <input type='submit' value = 'Submit' class="btn btn-primary" />
+            </div>
+
+          </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="https://github.com/mmckeon16/SSW-215-Project">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Test Resource 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>

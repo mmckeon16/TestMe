@@ -109,14 +109,14 @@ app.post('/upload', function(req, res) {
 
   console.log("Body: " + JSON.stringify(req.body));
   var creatorName = req.body.creatorName;
-  var creationCode = help.createCode();
+ // var creationCode = help.createCode();
   var testName = req.body.testName;
-  var questionList = help.createQuestions(req.body.questions);
-  var responseList = help.createResponseList(req.body.questions);
+ // var questionList = questions.createQuestions(req.body.questions);
+ // var responseList = questions.createResponseList(req.body.questions);
   var surveyOption = req.body.surveyOption;
   var description = req.body.description;
 
-  var values = [[creatorName, creationCode, testName, questionList, responseList, surveyOption]];
+  //var values = [[creatorName, creationCode, testName, questionList, responseList, surveyOption]];
   var sql = "INSERT INTO surveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES ? ";
 
 });

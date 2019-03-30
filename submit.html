@@ -73,10 +73,10 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <p>Upload exams and quizzes here. Please make sure to omit any names, signatures, or any other identifying information from the file.</p>
-          <!-- Submission Form -->
-          <form class="createSurvey" action="/upload" method="POST" enctype="multipart/form-data">
-
+          <p>Create a Test or Survey Here!</p>
+          <!-- Submission Form 
+          <form class="createSurvey" action="/upload" method="POST" enctype="multipart/form-data"> -->
+          <form class="createSurvey" enctype="multipart/form-data">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls">
                 <label>Your Name</label>
@@ -93,10 +93,8 @@
               </div>
             </div>
 
-            <div class ="control-group">
-              <div id = "submit-container">
-                <button onclick = "createShortAnswer()"> Add Short Answer Question </button>
-              </div>
+            <div>
+              <button id = "shortAnswer" onclick = "createShortAnswer()"> Add Short Answer Question </button>
             </div>
             
             <!--File input -->
@@ -140,6 +138,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/addQuestions.js"></script>
 
     <!-- Custom scripts for this template -->
     <script src="js/clean-blog.min.js"></script>

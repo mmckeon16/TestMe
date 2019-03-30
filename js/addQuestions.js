@@ -1,19 +1,20 @@
-module.exports = {
-	createShortAnswer: function() {
-		var container = document.getElementById("submit-container");
+function createShortAnswer() {
+		var container = document.getElementById("shortAnswer");
 		var input = document.createElement("input");
         input.type = "text";
-	}
+        console.log("we are in the method");
+        return false;
+}
 
-	createLongAnswer: function() {
+function createLongAnswer() {
 
-	}
+}
 
-	createMC: function() {
 
-	}
+function createMC() {
 
-	createTrueFalse: function() {
+}
 
-	}
+function createTrueFalse() {
+
 }

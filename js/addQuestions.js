@@ -12,14 +12,17 @@ function createShortAnswer() {
 function createLongAnswer() {
 		var question = document.getElementById("longAnswer");
 		var input = document.createElement("input");
+		var breakEl = document.createElement("br");
 		input.type = "text";
 		question.appendChild(input);
-		// question.appendChild(break);
+		question.appendChild(breakEl);
 	
 		// Delete question button
 		var btn = document.createElement("BUTTON");
 		btn.innerHTML = "DELETE";
 		document.body.appendChild(btn);
+
+		return false;
 
 }
 

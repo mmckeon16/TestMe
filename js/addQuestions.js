@@ -1,8 +1,11 @@
 function createShortAnswer() {
-		var container = document.getElementById("shortAnswer");
+		var container = document.getElementById("addedQuestions");
 		var input = document.createElement("input");
+		var breakElem = document.createElement("br");
         input.type = "text";
-        console.log("we are in the method");
+        input.placeholder = "Insert Text for Short Answer";
+        container.appendChild(input);
+        container.appendChild(breakElem);
         return false;
 }
 

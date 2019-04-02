@@ -358,10 +358,10 @@ header.masthead .post-heading .meta a {
   font-size: 1.5em;
   position: relative;
   z-index: 1;
-  padding: 0;
+  padding: 0px;
   resize: none;
   border: none;
-  border-radius: 0;
+  border-radius: 3px;
   background: none;
   box-shadow: none !important;
   font-family: 'Lora', 'Times New Roman', serif;
@@ -499,12 +499,13 @@ footer .copyright {
 .looks-good {
   font-family: 'Merienda', cursive;
   font-size: 20px;
+  text-align: center;
 }
 
 /* submition button */
 
 .btn {
-  margin-left: 150px;
+  margin-left: 125px;
   font-weight: 800;
   letter-spacing: 1px;
   border-radius: 4px;

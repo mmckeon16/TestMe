@@ -466,7 +466,7 @@ footer .copyright {
   display: inline-block;
   text-align: center;
   width: 80%;
-  margin-left: 10px;
+  margin-left: 100px;
 }
 
 .input-field {
@@ -507,22 +507,21 @@ footer .copyright {
   display: inline-block;
   position: relative;
   width: 100%;
-  margin: 3% 0 0 0;
-  height: 45px;
+  height: 40px;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   border: 3px solid #FFF8EA;
   font-size: 1.2em;
   color: #FCE2AB;
-  text-align: center;
+  text-align: auto;
   background: none;
   transition: color 0.5s ease;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   color: #fff;
-  background-color: #FCE2AB !important;
+  background-color: #FFF8EA !important;
   border-color: #FCE2AB !important;
 }
 

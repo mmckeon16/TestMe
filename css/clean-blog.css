@@ -1,3 +1,11 @@
+/* colors:
+FFF8EA
+FCE2AB
+FF8C77
+CE5061
+A22347 */
+
+
 #mainNav .search-container button {
  
   padding: 6px 10px;
@@ -419,19 +427,9 @@ footer .copyright {
   text-align: center;
 }
 
-.btn {
-  font-size: 14px;
-  font-weight: 800;
-  padding: 15px 25px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border-radius: 0;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
 .btn-primary {
-  background-color: #0085A1;
-  border-color: #0085A1;
+  background-color: none;
+  border-color: #FFF8EA;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
@@ -482,7 +480,7 @@ footer .copyright {
 
 .input-tab {
   display: inline-block;
-  text-align: left;
+  text-align: center;
   width: 80%;
   margin-left: 10px;
 }
@@ -501,7 +499,7 @@ footer .copyright {
 
 .question-input-field {
   display: inline-block;
-  text-align: left;
+  text-align: center;
   width: 80%;
   margin-left: 10px;
   display: inline-block;
@@ -512,4 +510,48 @@ footer .copyright {
   font-family: inherit;
   font-size: 15px;
   font-weight: bold;
+}
+
+/* submition button */
+
+.btn {
+  font-weight: 800;
+  padding: 15px 25px;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin: 3% 0 0 0;
+  height: 45px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: 3px solid #FFF8EA;
+  font-size: 1.2em;
+  color: #FCE2AB;
+  text-align: center;
+  background: none;
+  transition: color 0.25s ease;
+  /* 
+  &:after {
+    position: absolute;
+    content: '';
+    top:0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #FCE2AB;
+    transform-origin:left;
+    transition: width 0.5s ease;
+    z-index:-1;
+}
+&:hover {
+    color: $bg;
+
+    &:after {
+        width: 100%;
+    }
+}  */
 }

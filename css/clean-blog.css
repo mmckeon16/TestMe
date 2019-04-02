@@ -473,7 +473,7 @@ footer .copyright {
   display: inline-block;
   width: 100%;
   padding: 5px;
-  margin: 18px 0 0 10px;
+  /*margin: 18px 0 0 10px;*/
   border: 1px solid #980000ff;
   border-radius: 4px;
   font-family: inherit;
@@ -485,11 +485,11 @@ footer .copyright {
   display: inline-block;
   text-align: center;
   width: 80%;
-  margin-left: 10px;
+  /*margin-left: 10px;*/
   display: inline-block;
   width: 100%;
   padding: 5px;
-  margin: 18px 0 0 10px;
+  /*margin: 18px 0 0 10px;*/
   border-radius: 4px;
   font-family: inherit;
   font-size: 15px;
@@ -505,7 +505,7 @@ footer .copyright {
 /* submition button */
 
 .btn {
-  margin-left: 125px;
+  /*margin-left: 125px;*/
   font-weight: 800;
   letter-spacing: 1px;
   border-radius: 4px;

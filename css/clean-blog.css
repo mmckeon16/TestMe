@@ -490,9 +490,20 @@ footer .copyright {
 .input-field {
   display: inline-block;
   width: 100%;
-  padding: 5px;
+  padding: 15px;
   margin: 18px 0 0 10px;
   border: 1px solid #980000ff;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.question-input-field {
+  display: inline-block;
+  width: 100%;
+  padding: 15px;
+  margin: 18px 0 0 10px;
   border-radius: 4px;
   font-family: inherit;
   font-size: 15px;

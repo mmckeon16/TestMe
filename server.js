@@ -5,7 +5,7 @@ const exphbs = require("express-handlebars");
 var app = express();
 var path = require('path');
 var help = require('./js/getFiles');
-var questions = require('./js/addQuestions');
+var questions = require('./js/createQuestions');
 
 var nodeMailer = require('nodemailer');
 
@@ -64,21 +64,23 @@ app.post('/send-email', function(req, res) {
 
 app.get('/post', function(req, res){
 
-   // make db call to get all info for this
-    help.getAllFiles(function(err, results){
-        if(err){
-            res.render("resources", {
-                layout: 'main',
-                results: null
-            });
-        } else{
-             res.render("resources", {
-                layout: 'main',
-                results: results
-            });
-         }
+  console.log(req);
 
-    });
+    // make db call to get all info for this
+    // help.getAllFiles(function(err, results){
+    //     if(err){
+    //         res.render("resources", {
+    //             layout: 'main',
+    //             results: null
+    //         });
+    //     } else{
+    //          res.render("resources", {
+    //             layout: 'main',
+    //             results: results
+    //         });
+    //      }
+
+    // });
    
 });
 
@@ -111,7 +113,7 @@ app.post('/upload', function(req, res) {
   var creatorName = req.body.creatorName;
  // var creationCode = help.createCode();
   var testName = req.body.testName;
- // var questionList = questions.createQuestions(req.body.questions);
+  var questionList = questions.createQuestions(req.body);
  // var responseList = questions.createResponseList(req.body.questions);
   var surveyOption = req.body.surveyOption;
   var description = req.body.description;

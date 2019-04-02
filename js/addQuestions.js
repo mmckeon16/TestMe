@@ -22,15 +22,11 @@ function createLongAnswer() {
 	input.required = true;
 	question.appendChild(input);
 	
-
 	// Delete question button
-	var btn = document.createElement("button");
+	var btn = document.createElement("BUTTON");
 	btn.innerHTML = "DELETE";
-	btn.type = "button";
 	document.body.appendChild(btn);
-	question.appendChild(breakEl);
-
-	return false;
+		// return false;
 
 }
 

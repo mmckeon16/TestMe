@@ -127,12 +127,17 @@ function makeMatch(){
 	var container = document.getElementById("matching");
 	var input = document.createElement("input");
 	var breakElem = document.createElement("br");
-    input.type = "text";
+	var deleteMatch = document.createElement("BUTTON");
+	
+	deleteMatch.innerHTML = "Delete Match";
+	deleteMatch.type = "button";
+
+	input.type = "text";
     input.name = "match1";
     input.placeholder = "Insert Match";
     input.required = true;
     container.appendChild(input);
-    
+	
 
     var option = document.createElement("input");
     option.type = "text";
@@ -141,61 +146,61 @@ function makeMatch(){
     option.required = true;
 	container.appendChild(option);
 
+	container.appendChild(deleteMatch);
+	container.appendChild(breakElem);
+
 }
 
 function createMatching(){
-	// will need a 2 div elements: For question and add matches
 	var container = document.getElementById("addedQuestions");
 	var input = document.createElement("input");
 	var breakElem = document.createElement("br");
-	var divElem1 = document.createElement("div");
-	// var divElem2 = document.createElement("div");
+		//add Match Button
 	var addMatch = document.createElement("BUTTON");
+	var divElem1 = document.createElement("div");
 	var deleteMatch = document.createElement("BUTTON");
 
-	divElem1.id = "matching";
-	container.appendChild(divElem1);
-	container = document.getElementById("matching");
+	// divElem1.id = "matching";
+	// container.appendChild(divElem1);
+	// container = document.getElementById("matching");
 
+	// Input question prompt
     input.type = "text";
 	input.name = "Matching";
 	input.placeholder = "Insert Question Prompt";
 	input.required = true;
-    container.appendChild(input);
+	container.appendChild(input);
+	
+	
+	divElem1.id = "matching";
+	container.appendChild(divElem1);
+	container = document.getElementById("matching");
+	
 
-	container.appendChild(breakElem);
 	addMatch.innerHTML = "Add Match";
 	addMatch.type = "button";
 	deleteMatch.innerHTML = "Delete Match";
 	deleteMatch.type = "button";
-	container.appendChild(addMatch);
 	addMatch.onclick = makeMatch();
+	container = document.getElementById("addedQuestions");
+	container.appendChild(addMatch);
+
+
+	container = document.getElementById("matching");
+
+	// container.appendChild(deleteMatch);
+	addMatch.onclick = function(){makeMatch()};
+	// container.appendChild(breakElem);
 	container.appendChild(divElem1);
 
-	// var optionA = document.createElement("input");
-    // options.type = "text";
-    // options.name = "matchingOptions"
-    // options.placeholder = "enter option";
-	// options.required = true;
-	
-	// var optionB = document.createElement("input");
-    // options.type = "text";
-    // options.name = "matchingOptions"
-    // options.placeholder = "enter option";
-	// options.required = true; 
 
-	// container.appendChild(optionA);
-	// container.appendChild(optionB);
-	
 	container.appendChild(breakElem);
 
-	container.appendChild(addMatch);
+	// container.appendChild(addMatch);
 	
 	// addMatch.onclick = makeMatch();
 
 	container.appendChild(breakElem);
-
-	container.appendChild(deleteMatch);
 
 
 }

@@ -5,7 +5,6 @@ FF8C77
 CE5061
 A22347 */
 
-
 #mainNav .search-container button {
  
   padding: 6px 10px;
@@ -497,9 +496,15 @@ footer .copyright {
   font-weight: bold;
 }
 
+.looks-good {
+  font-family: 'Merienda', cursive;
+  font-size: 20px;
+}
+
 /* submition button */
 
 .btn {
+  margin-left: 150px;
   font-weight: 800;
   letter-spacing: 1px;
   border-radius: 4px;

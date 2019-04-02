@@ -67,20 +67,20 @@ app.get('/post', function(req, res){
   console.log(req);
 
     // make db call to get all info for this
-    // help.getAllFiles(function(err, results){
-    //     if(err){
-    //         res.render("resources", {
-    //             layout: 'main',
-    //             results: null
-    //         });
-    //     } else{
-    //          res.render("resources", {
-    //             layout: 'main',
-    //             results: results
-    //         });
-    //      }
+    help.getAllFiles(function(err, results){
+        if(err){
+            res.render("resources", {
+                layout: 'main',
+                results: null
+            });
+        } else{
+             res.render("resources", {
+                layout: 'main',
+                results: results
+            });
+         }
 
-    // });
+    });
    
 });
 

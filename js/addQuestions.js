@@ -26,6 +26,7 @@ function createLongAnswer() {
 	// Delete question button
 	var btn = document.createElement("BUTTON");
 	btn.innerHTML = "DELETE";
+	btn.type = "button";
 	document.body.appendChild(btn);
 		// return false;
 

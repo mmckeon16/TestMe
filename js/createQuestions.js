@@ -1,6 +1,7 @@
 module.exports = {
 	createQuestions: function(body) {
 		var questions = [];
+		console.log(body.shortAnswer);
 
 		//get short answer
 		var shortAnswers = body.shortAnswer;
@@ -13,7 +14,7 @@ module.exports = {
 		//get mc
 		var multipleChoiceQuestions = body.multipleChoice;
 		var mcOptions = body.mcOptions;
-		questions = makeMC(quest)
+		questions = makeMC(questions, multipleChoiceQuestions, mcOptions);
 
 		//get tf
 		var trueFalseQuestions = body.TrueFalse;
@@ -24,6 +25,8 @@ module.exports = {
 }
 
 function makeQuestions(questions, questionsToAdd, questionType) {
+	console.log(questionsToAdd);
+
 	if(questionsToAdd == null) {
 		return;
 	}
@@ -58,7 +61,7 @@ function makeMC(questions, mcQuestions, mcOptions) {
 	var newQuestions = questions;
 	var index = 0;
 	for (index; index < mcQuestions.length; index += 1) {
-		optionsObj = mcOptions.split(";");
+		optionsObj = mcOptions[index].split(";");
 		newQuestions.push({"type": "multipleChoice", "answer": "", "question": mcQuestions[index], "options": optionsObj});
 	}
 

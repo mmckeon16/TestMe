@@ -460,10 +460,10 @@ footer .copyright {
   margin: auto;
   width: 90%;
   padding: 1em;
+  border: 1px solid #a22347;
 }
 
 .input-tab {
-  border: 1px solid #a22347;
   display: inline-block;
   text-align: center;
   width: 80%;
@@ -515,7 +515,7 @@ footer .copyright {
   border: 3px solid #FFF8EA;
   font-size: 1.2em;
   color: #FCE2AB;
-  text-align: auto;
+  text-align: center;
   background: none;
   transition: color 0.5s ease;
 }

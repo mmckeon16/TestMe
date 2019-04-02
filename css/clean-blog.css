@@ -501,16 +501,14 @@ footer .copyright {
 
 .btn {
   font-weight: 800;
-  letter-spacing: 1px;
   border-radius: 4px;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   display: inline-block;
   padding: 12px 50px;
-  position: relative;
+  position: absolute;
   width: 70%;
-  height: 55px;
+  height: 50px;
   text-transform: uppercase;
-  text-decoration: none;
   cursor: pointer;
   border: 3px solid #FFF8EA;
   font-size: 1.2em;

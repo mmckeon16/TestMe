@@ -469,3 +469,14 @@ footer .copyright {
 .active {
   color: #2EBDD1;
 }
+
+/* submit.html basic layout and design */
+
+.test-border {
+  background-color:#980000ff;
+  border-radius: 20px;
+  margin: auto;
+  width: 90%;
+  padding: 1em;
+  opacity: 60%;
+}

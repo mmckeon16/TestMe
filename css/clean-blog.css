@@ -483,14 +483,14 @@ footer .copyright {
 .input-tab {
   display: inline-block;
   text-align: left;
-  width: 50%;
+  width: 80%;
   margin-left: 10px;
 }
 
 .input-field {
   display: inline-block;
   width: 100%;
-  padding: 15px;
+  padding: 5px;
   margin: 18px 0 0 10px;
   border: 1px solid #980000ff;
   border-radius: 4px;
@@ -502,7 +502,7 @@ footer .copyright {
 .question-input-field {
   display: inline-block;
   width: 100%;
-  padding: 15px;
+  padding: 5px;
   margin: 18px 0 0 10px;
   border-radius: 4px;
   font-family: inherit;

@@ -463,10 +463,11 @@ footer .copyright {
 }
 
 .input-tab {
+  border: 1px solid #a22347;
   display: inline-block;
   text-align: center;
   width: 80%;
-  margin-left: 100px;
+  margin-left: 150px;
 }
 
 .input-field {
@@ -532,5 +533,4 @@ footer .copyright {
 
 .btn-lg {
   font-size: 16px;
-  padding: 15px 25px;
 }

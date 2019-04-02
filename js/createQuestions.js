@@ -25,7 +25,7 @@ module.exports = {
 
 function makeQuestions(questions, questionsToAdd, questionType) {
 	if(questionsToAdd == null) {
-		break;
+		return;
 	}
 	var type = "";
 	if(questionType.localeCompare("shortAnswer") == 0) { //short answer
@@ -41,8 +41,9 @@ function makeQuestions(questions, questionsToAdd, questionType) {
 	}
 
 	var newQuestions = questions;
-	for (String theQuestion : questionsToAdd) {
-		newQuestions.push({"type": type, "answer": "", "question": theQuestion})
+	var index = 0;
+	for (index; index < questionsToAdd.length; index += 1) {
+		newQuestions.push({"type": type, "answer": "", "question": questionsToAdd[index]})
 	}
 
 	return newQuestions;
@@ -52,7 +53,7 @@ function makeQuestions(questions, questionsToAdd, questionType) {
 function makeMC(questions, mcQuestions, mcOptions) {
 
 	if(mcQuestions == null) {
-		break;
+		return;
 	}
 	var newQuestions = questions;
 	var index = 0;

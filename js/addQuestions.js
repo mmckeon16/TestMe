@@ -21,6 +21,7 @@ function createLongAnswer() {
 	input.placeholder = "Insert Text for Long Answer";
 	input.required = true;
 	question.appendChild(input);
+	question.appendChild(breakEl);
 	
 	// Delete question button
 	var btn = document.createElement("BUTTON");

@@ -28,13 +28,21 @@ connection.connect(function(err) {
 });
 
 /*STEP 1: USE THIS TO CREATE NEW TEST RESOURCE TABEL*/
-connection.query('CREATE table '+tableName+'('+creatorName+', '+creationCode+', '+surveyName+', '+surveyOrTest+', '+questions+', '+responses+')', function(err, results, fields){
-	if(err){
-		console.log(err);
-	} else {
-		console.log("success!");
-	}
-});
+// connection.query('CREATE table '+tableName+'('+creatorName+', '+creationCode+', '+surveyName+', '+surveyOrTest+', '+questions+', '+responses+')', function(err, results, fields){
+// 	if(err){
+// 		console.log(err);
+// 	} else {
+// 		console.log("success!");
+// 	}
+// });
+
+connection.query('SELECT * from '+tableName+' where creationCode = "a4c4f4c4-64d7-4c60-8ac5-d058a4280889"', function(err, results, fields) {
+  if(err){
+     console.log(err);
+   } else {
+     console.log(results);
+   }
+})
 
 
 //THIS CAN BE USED TO DELETE DATA FROM TABLE IF NEEDED

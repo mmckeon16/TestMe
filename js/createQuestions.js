@@ -9,16 +9,12 @@ module.exports = {
 		if(typeof shortAnswers != 'undefined') {
 			questions = makeQuestions(questions, shortAnswers, "shortAnswer");
 		}
-		
-
 
 		//get long answer
 		var longAnswers = body.longAnswer;
 		if(typeof longAnswers != 'undefined') {
 			questions = makeQuestions(questions, longAnswers, "longAnswer");
 		}
-
-		
 
 		//get mc
 		var multipleChoiceQuestions = body.multipleChoice;

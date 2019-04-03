@@ -76,6 +76,7 @@ app.get('/post', function(req, res){
                 results: null
             });
         } else{
+
              res.render("resources", {
                 layout: 'main',
                 results: results
@@ -85,6 +86,31 @@ app.get('/post', function(req, res){
     });
    
 });
+
+app.get('/quiz', function(req, res){
+
+  console.log(req.query.creationCode);
+
+  // make db call to get all info for this
+  quiz.getAllFiles(req.query.creationCode, function(err, results){
+      if(err){
+          res.render("resources", {
+              layout: 'main',
+              results: null
+          });
+      } else{
+            
+           res.render("resources", {
+              layout: 'main',
+              results: results
+          });
+       }
+
+  });
+   
+});
+
+
 
 //File Uploading
 app.get("/", function(req, res) {

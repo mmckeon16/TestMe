@@ -7,7 +7,7 @@ var connection = mysql.createConnection({
   database: "testdb",
 });
 var db = connection.database;
-var tableName = "surveyList";
+var tableName = "theNewSurveyList";
 
 module.exports = {
 
@@ -15,7 +15,19 @@ module.exports = {
 		connection.query('SELECT * from '+tableName , function(err, results, fields){
 			if(!err && results){
 				//there are tests, return the array
-				console.log(results);
+				callback(null, results);
+			}else{
+				console.log("Error with data base!");
+				callback("Database error!", results);
+			}
+		});		
+	}, 
+
+	getQuizFromCode : function(creationCode, callback) {
+		connection.query('SELECT * from '+tableName+' where creationCode = "'+creationCode+'"' , function(err, results, fields){
+			if(!err && results){
+				//there are tests, return the array
+				console.log(results.questionList);
 				callback(null, results);
 			}else{
 				console.log("Error with data base!");

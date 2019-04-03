@@ -12,20 +12,16 @@
 
           {{#each results}}
           <div class="post-preview">
-            <a href={{this.filename}}>
+            <a href="/quiz?creationCode={{this.creationCode}}">
               <h2 class="post-title">
-                {{this.className}} {{this.description}}
+                {{this.surveyName}}
               </h2>
             </a>
-            From {{this.profName}} during {{this.semester}}
-            <br>
-            Rating: {{this.rating}}
-            <br>
-            Number of Ratings: {{this.numRating}}
-              
-            <p class="post-meta">
-              Notes: {{this.notes}}
+            <p>
+            Author: {{this.creatorName}}
+            Code:{{this.creationCode}}
             </p>
+           
           </div>
           <br>
           <hr>
@@ -43,3 +39,5 @@
       </div>
     </div>
     <hr>
+    <script src="js/createQuestions.js"></script>
+

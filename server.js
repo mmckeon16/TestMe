@@ -73,13 +73,13 @@ app.post('/send-email', function(req, res) {
   let transporter = nodeMailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'testresourcestevens@gmail.com',
+      user: 'testsurveyssw322@gmail.com',
       pass: 'Stevens1870' //TODO Change this
     }
   });
   let mailOptions = {
     from: req.body.email, // sender address
-    to: 'testresourcestevens@gmail.com', // list of receivers
+    to: 'testsurveyssw322@gmail.com', // list of receivers
     subject: 'Mail from website form ' + req.body.firstname, // + " " +
     //req.body.lastname, // Subject line
     text: "FROM " + req.body.email + ":: " + req.body.message // plain text body

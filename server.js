@@ -5,6 +5,8 @@ const exphbs = require("express-handlebars");
 var app = express();
 var path = require('path');
 var help = require('./js/getFiles');
+var quiz = require('./js/getQuizzes');
+var uuid = require('./js/UUIDs');
 var questions = require('./js/createQuestions');
 
 var nodeMailer = require('nodemailer');
@@ -64,16 +66,17 @@ app.post('/send-email', function(req, res) {
 
 app.get('/post', function(req, res){
 
-  console.log(req);
+  //console.log(req);
 
     // make db call to get all info for this
-    help.getAllFiles(function(err, results){
+    quiz.getAllFiles(function(err, results){
         if(err){
             res.render("resources", {
                 layout: 'main',
                 results: null
             });
         } else{
+
              res.render("resources", {
                 layout: 'main',
                 results: results
@@ -83,6 +86,31 @@ app.get('/post', function(req, res){
     });
    
 });
+
+app.get('/quiz', function(req, res){
+
+  console.log(req.query.creationCode);
+
+  // make db call to get all info for this
+  quiz.getAllFiles(req.query.creationCode, function(err, results){
+      if(err){
+          res.render("resources", {
+              layout: 'main',
+              results: null
+          });
+      } else{
+            
+           res.render("resources", {
+              layout: 'main',
+              results: results
+          });
+       }
+
+  });
+   
+});
+
+
 
 //File Uploading
 app.get("/", function(req, res) {
@@ -111,16 +139,28 @@ app.post('/upload', function(req, res) {
 
   console.log("Body: " + JSON.stringify(req.body));
   var creatorName = req.body.creatorName;
- // var creationCode = help.createCode();
+  var creationCode = uuid.makeUUID();
   var testName = req.body.testName;
-  var questionList = questions.createQuestions(req.body);
- // var responseList = questions.createResponseList(req.body.questions);
-  var surveyOption = req.body.surveyOption;
+  var questionList = JSON.stringify(questions.createQuestions(req.body));
+  var responseList = null;
+  var surveyOption = "SURVEY";//req.body.surveyOption;
   var description = req.body.description;
 
-  //var values = [[creatorName, creationCode, testName, questionList, responseList, surveyOption]];
-  var sql = "INSERT INTO surveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES ? ";
+  var values = [[creatorName, creationCode, testName, surveyOption, questionList, responseList]];
+  console.log(values);
+  var sql = "INSERT INTO theNewSurveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES ?";
+  //var sql = "INSERT INTO theNewSurveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES("+creatorName+","+creationCode+", "+testName+", "+surveyOption+", "+(questionList)+", "+responseList+")";
 
+
+  con.query(sql, [values], function (err, result) {
+    if (err) {
+      console.log(err.sql);
+      throw err;
+    }
+    console.log(result);
+  });
+
+  res.sendFile(path.join(__dirname + '/submit.html'));
 });
 
 app.get('*', function(req, res) {

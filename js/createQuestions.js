@@ -33,13 +33,11 @@ module.exports = {
 			questions = makeQuestions(questions, trueFalseQuestions, "trueFalse");
 		}
 
-		console.log(questions);
+		return(questions);
 	}
 }
 
 function makeQuestions(questions, questionsToAdd, questionType) {
-	console.log(questionType + "in make q;s function: "+questionsToAdd);
-
 	if(questionsToAdd == null) {
 		return;
 	}
@@ -79,7 +77,6 @@ function makeMC(questions, mcQuestions, mcOptions) {
 	if(mcQuestions == null) {
 		return;
 	}
-	console.log("in mc : " + questions);
 	var newQuestions = questions;
 
 	var index = 0;
@@ -87,7 +84,6 @@ function makeMC(questions, mcQuestions, mcOptions) {
 	if(typeof mcQuestions  === 'string') {
 		//then only one to add
 		optionsObj = mcOptions.split(";");
-		console.log(optionsObj);
 		newQuestions.push({"type": "multipleChoice", "answer": "", "question": mcQuestions, "options": optionsObj});
 	} else {
 		for (index; index < mcQuestions.length; index += 1) {

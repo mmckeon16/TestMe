@@ -10,13 +10,13 @@ var connection = mysql.createConnection({
 });
 
 var db = "testdb";
-var tableName = "surveyList";
+var tableName = "theNewSurveyList";
 var creatorName = "creatorName VARCHAR(40) NOT NULL";
 var creationCode = "creationCode VARCHAR(100) NOT NULL";
 var surveyName = "surveyName VARCHAR(40) NOT NULL";
 var surveyOrTest = "surveyOption VARCHAR(10) NOT NULL"
-var questions = "questionList JSON NOT NULL";
-var responses = "responseList JSON NOT NULL";
+var questions = "questionList VARCHAR(5000) NOT NULL";
+var responses = "responseList VARCHAR(10000)";
 
 connection.connect(function(err) {
   if (err) {
@@ -38,7 +38,7 @@ connection.query('CREATE table '+tableName+'('+creatorName+', '+creationCode+', 
 
 
 //THIS CAN BE USED TO DELETE DATA FROM TABLE IF NEEDED
-// connection.query('DELETE FROM ratingTable', function(err, results, fields){
+// connection.query('DELETE FROM '+tableName, function(err, results, fields){
 //  if(err){
 //    console.log(err);
 //  } else {
@@ -48,7 +48,7 @@ connection.query('CREATE table '+tableName+'('+creatorName+', '+creationCode+', 
 
 
 // THIS QUERY CAN VIEW ALL THE DATA FROM RATING
-// connection.query('SELECT * from ratingTable', function(err, results, fields){
+// connection.query('SELECT * from '+tableName, function(err, results, fields){
 // 	if(err){
 // 		console.log(err);
 // 	} else {

@@ -473,24 +473,18 @@ footer .copyright {
   width: 100%;
   padding: 5px;
   margin: 18px 0 0 10px;
-  border: 1px solid #980000ff;
-  border-radius: 4px;
+  border: 2px solid var(--light-grey);
+  background-color: rgb(189, 157, 157);
+  border-bottom: 3px solid #980000ff;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 15px;
-  font-weight: bold;
 }
 
 .question-input-field {
-  display: inline-block;
-  text-align: center;
-  width: 80%;
-  display: inline-block;
-  width: 100%;
-  padding: 5px;
+  padding: 0px;
   margin: 18px 0 0 10px;
-  border-radius: 4px;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 15px;
+  font-size: 25px;
   font-weight: bold;
 }
 
@@ -578,8 +572,8 @@ input:checked + .slider .off
 
 .looks-good {
   font-family: 'Merienda', cursive;
-  font-size: 20px;
-  text-align: center;
+  font-size: 15px;
+  text-align: justify;
 }
 
 .question {
@@ -591,7 +585,7 @@ input:checked + .slider .off
   border: 2px solid #FFF8EA;
   color: #A22347;
   display: inline-block;
-  height: 45px;
+  height: 30px;
   width: 200px;
   cursor: pointer;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -608,13 +602,13 @@ input:checked + .slider .off
   display: inline-block;
   padding: 0px;
   position: relative;
-  width: 100%;
-  height: 40px;
+  width: 40%;
+  height: 25px;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   border: 3px solid #FFF8EA;
-  font-size: 1.2em;
+  font-size: 10px;
   color: #FCE2AB;
   text-align: center;
   background: none;

@@ -442,13 +442,13 @@ footer .copyright {
 
 .dislike:hover,
 .like:hover {
-  color: #2EBDD1;
+  color: #FF8C77;
   transition: all .2s ease-in-out;
   transform: scale(1.1);
 }
 
 .active {
-  color: #2EBDD1;
+  color: #FF8C77;
 }
 
 /* submit.html basic layout and design */
@@ -466,7 +466,6 @@ footer .copyright {
   display: inline-block;
   text-align: center;
   width: 80%;
-  /*margin-left: 100px;*/
 }
 
 .input-field {
@@ -476,7 +475,7 @@ footer .copyright {
   margin: 18px 0 0 10px;
   border: 1px solid #980000ff;
   border-radius: 4px;
-  font-family: inherit;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 15px;
   font-weight: bold;
 }
@@ -485,13 +484,12 @@ footer .copyright {
   display: inline-block;
   text-align: center;
   width: 80%;
-  /*margin-left: 10px;*/
   display: inline-block;
   width: 100%;
   padding: 5px;
   margin: 18px 0 0 10px;
   border-radius: 4px;
-  font-family: inherit;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 15px;
   font-weight: bold;
 }
@@ -514,7 +512,7 @@ footer .copyright {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #7BC6EC;
+  background-color: #A22347;
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -532,11 +530,11 @@ footer .copyright {
 }
 
 input:checked + .slider {
-  background-color: #2ab934;
+  background-color: #FCE2AB;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #CE5061;
 }
 
 input:checked + .slider:before {
@@ -584,10 +582,25 @@ input:checked + .slider .off
   text-align: center;
 }
 
+.question {
+  font-size: 10px;
+  border-radius: 3px;
+  position: relative;
+  padding: 0px;
+  background-color: none;
+  border: 2px solid #FFF8EA;
+  color: #A22347;
+  display: inline-block;
+  height: 45px;
+  width: 200px;
+  cursor: pointer;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 /* submition button */
 
 .btn {
-  /*margin-left: 125px;*/
+  margin-top: 10px;
   font-weight: 800;
   letter-spacing: 1px;
   border-radius: 4px;
@@ -607,6 +620,7 @@ input:checked + .slider .off
   background: none;
   transition: color 0.75s ease;
 }
+
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   color: #fff;

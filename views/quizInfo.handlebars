@@ -5,8 +5,8 @@
           <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
               <div class="page-heading">
-                <h1>(Test Name)</h1>
-                <h3>(Author Name)</h3>
+                <h1>{{results.surveyName}}</h1>
+                <h3>by {{results.creatorName}}</h3>
               </div>
             </div>
           </div>
@@ -17,7 +17,26 @@
       <div class = "container">
         <div class="test-border">
             <div class="col-lg-8 col-md-10 mx-auto">
-
+              {{#each results.questionList}}
+                <h4> {{this.question}} </h4>
+                  {{#iff this.type "==" "shortAnswer"}}
+                    <input type="text" name="shortAnswer" placeholder="Insert Answer for Short Answer" required="">
+                  {{/iff}}
+                  {{#iff this.type "==" "longAnswer"}}
+                    <input type="text" name="longAnswer" placeholder="Insert Answer for Long Answer" required="">
+                  {{/iff}}
+                  {{#iff this.type "==" "multipleChoice"}}
+                    {{#each this.options}}
+                      <input type="radio" name="multipleChoice" value={{this}}> {{this}}<br>
+                    {{/each}}
+                  {{/iff}}
+                  {{#iff this.type "==" "trueFalse"}}
+                    <input type="radio" name="trueFalse" value="true"> True<br>
+                    <input type="radio" name="trueFalse" value="false"> False<br>
+                  {{/iff}}
+                  <br>
+                  <br>
+              {{/each}}
             </div>
         </div>
       </div>

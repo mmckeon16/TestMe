@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var upload = require('express-fileupload');
-const exphbs = require("express-handlebars");
+//const exphbs = require("express-handlebars");
 var app = express();
 var path = require('path');
 var help = require('./js/getFiles');
@@ -12,6 +12,35 @@ var questions = require('./js/createQuestions');
 var nodeMailer = require('nodemailer');
 
 var mysql = require('mysql');
+
+var exphbs = require('express-handlebars');
+var hbsHelpers = exphbs.create({
+    helpers: {
+      iff: function(a, operator, b, opts) {
+          switch(operator) {
+           case '==':
+               bool = a == b;
+               break;
+           case '>':
+               bool = a > b;
+               break;
+           case '<':
+               bool = a < b;
+               break;
+           default:
+               throw "Unknown operator " + operator;
+        }
+     
+        if (bool) {
+            return opts.fn(this);
+        } else {
+            return opts.inverse(this);
+        }
+      }
+    },
+    defaultLayout: 'layout'
+});
+
 
 
 // use bodyparser
@@ -25,8 +54,10 @@ app.use(upload({
     limits: { fileSize: 5242880 }
 }));
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+// app.set("view engine", "handlebars");
+app.engine('handlebars', hbsHelpers.engine);
+app.set('view engine', 'handlebars');
 
 // Create database connection
 var con = mysql.createConnection({
@@ -92,16 +123,16 @@ app.get('/quiz', function(req, res){
   console.log(req.query.creationCode);
 
   // make db call to get all info for this
-  quiz.getAllFiles(req.query.creationCode, function(err, results){
+  quiz.getQuizFromCode(req.query.creationCode, function(err, results){
       if(err){
-          res.render("resources", {
-              layout: 'main',
+          res.render("quizInfo", {
+              layout: 'quiz',
               results: null
           });
       } else{
-            
-           res.render("resources", {
-              layout: 'main',
+          console.log(results.creatorName);
+          res.render("quizInfo", {
+              layout: 'quiz',
               results: results
           });
        }
@@ -114,26 +145,26 @@ app.get('/quiz', function(req, res){
 
 //File Uploading
 app.get("/", function(req, res) {
-  res.redirect("/index");
+  res.redirect("/oldIndex.html");
 });
 
 //change this to be plug in access code
-app.get("/index", function(req, res) {
-    help.getTop10Posts(function(err, results){
-        if(err){
-            res.render("resources", {
-                layout: 'index',
-                results: null
-            });
-        } else{
-             res.render("resources", {
-                layout: 'index',
-                results: results
-            });
-         }
+// app.get("/index", function(req, res) {
+//     help.getTop10Posts(function(err, results){
+//         if(err){
+//             res.render("resources", {
+//                 layout: 'index',
+//                 results: null
+//             });
+//         } else{
+//              res.render("resources", {
+//                 layout: 'index',
+//                 results: results
+//             });
+//          }
 
-    });
-});
+//     });
+// });
 
 app.post('/upload', function(req, res) {
 

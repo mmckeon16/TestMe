@@ -27,7 +27,12 @@ module.exports = {
 		connection.query('SELECT * from '+tableName+' where creationCode = "'+creationCode+'"' , function(err, results, fields){
 			if(!err && results){
 				//there are tests, return the array
-				console.log(results.questionList);
+				if(results[0].questionList != null){
+					results[0].questionList = JSON.parse(results[0].questionList);
+				}
+
+				results = results[0];
+				//console.log(results);
 				callback(null, results);
 			}else{
 				console.log("Error with data base!");

@@ -20,13 +20,22 @@ module.exports = {
 		var multipleChoiceQuestions = body.multipleChoice;
 		var mcOptions = body.mcOptions;
 		if(typeof multipleChoiceQuestions != 'undefined') {
-			questions = makeMCRanking(questions, multipleChoiceQuestions, mcOptions);
+			questions = makeMCRanking(questions, multipleChoiceQuestions, "multipleChoice", mcOptions);
 		}
 
 		//get tf
 		var trueFalseQuestions = body.trueFalse;
 		if(typeof trueFalseQuestions != 'undefined') {
 			questions = makeQuestions(questions, trueFalseQuestions, "trueFalse");
+		}
+
+		//get ranking
+		console.log("next line is ranking options");
+		console.log(body.rankingOptions);
+		var rankingQuestions = body.ranking;
+		var rankingOptions = body.rankingOptions;
+		if(typeof rankingQuestions != 'undefined') {
+			questions = makeMCRanking(questions, rankingQuestions, "ranking", rankingOptions);
 		}
 
 		return(questions);
@@ -37,18 +46,6 @@ function makeQuestions(questions, questionsToAdd, questionType) {
 	if(questionsToAdd == null) {
 		return;
 	}
-	var type = "";
-	if(questionType.localeCompare("shortAnswer") == 0) { //short answer
-		type = "shortAnswer";
-	} else if (questionType.localeCompare("longAnswer") == 0) {
-		type = "longAnswer";
-	} else if (questionType.localeCompare("multipleChoice") == 0) {
-		type = "multipleChoice";
-	} else if (questionType.localeCompare("trueFalse") == 0) {
-		type = "trueFalse";
-	} else {
-		throw new error("incorrect formatting");
-	}
 
 	var newQuestions = questions;
 	var index = 0;
@@ -56,10 +53,10 @@ function makeQuestions(questions, questionsToAdd, questionType) {
 	if(typeof questionsToAdd === 'string') {
 		//TODO check if long answer is getting here????
 		//then only one to add
-		newQuestions.push({"type": type, "answer": "", "question": questionsToAdd});
+		newQuestions.push({"type": questionType, "answer": "", "question": questionsToAdd});
 	} else {
 		for (index; index < questionsToAdd.length; index += 1) {
-		newQuestions.push({"type": type, "answer": "", "question": questionsToAdd[index]});
+		newQuestions.push({"type": questionType, "answer": "", "question": questionsToAdd[index]});
 	}
 	}
 	
@@ -68,23 +65,22 @@ function makeQuestions(questions, questionsToAdd, questionType) {
 	
 }
 
-function makeMCRanking(questions, mcQuestions, mcOptions) {
+function makeMCRanking(questions, questionsToAdd, type, options) {
 
-	if(mcQuestions == null) {
+	if(questionsToAdd == null) {
 		return;
 	}
 	var newQuestions = questions;
-
 	var index = 0;
 
-	if(typeof mcQuestions  === 'string') {
+	if(typeof questionsToAdd  === 'string') {
 		//then only one to add
-		optionsObj = mcOptions.split(";");
-		newQuestions.push({"type": "multipleChoice", "answer": "", "question": mcQuestions, "options": optionsObj});
+		optionsObj = options.split(";");
+		newQuestions.push({"type": type, "answer": "", "question": questionsToAdd, "options": optionsObj});
 	} else {
-		for (index; index < mcQuestions.length; index += 1) {
-			optionsObj = mcOptions[index].split(";");
-			newQuestions.push({"type": "multipleChoice", "answer": "", "question": mcQuestions[index], "options": optionsObj});
+		for (index; index < questionsToAdd.length; index += 1) {
+			optionsObj = options[index].split(";");
+			newQuestions.push({"type": type, "answer": "", "question": questionsToAdd[index], "options": optionsObj});
 		}
 	}
 	

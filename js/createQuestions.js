@@ -20,7 +20,7 @@ module.exports = {
 		var multipleChoiceQuestions = body.multipleChoice;
 		var mcOptions = body.mcOptions;
 		if(typeof multipleChoiceQuestions != 'undefined') {
-			questions = makeMC(questions, multipleChoiceQuestions, mcOptions);
+			questions = makeMCRanking(questions, multipleChoiceQuestions, mcOptions);
 		}
 
 		//get tf
@@ -68,7 +68,7 @@ function makeQuestions(questions, questionsToAdd, questionType) {
 	
 }
 
-function makeMC(questions, mcQuestions, mcOptions) {
+function makeMCRanking(questions, mcQuestions, mcOptions) {
 
 	if(mcQuestions == null) {
 		return;

@@ -308,7 +308,7 @@ header.masthead .post-heading .meta a {
 
 .post-preview > a:focus, .post-preview > a:hover {
   text-decoration: none;
-  color: #0085A1;
+  color: #CE5061;
 }
 
 .post-preview > a > .post-title {
@@ -524,7 +524,7 @@ footer .copyright {
 }
 
 input:checked + .slider {
-  background-color: #FCE2AB;
+  background-color: #CE5061;
 }
 
 input:focus + .slider {
@@ -576,7 +576,7 @@ input:checked + .slider .off
   text-align: justify;
 }
 
-.question {
+button[type="button"] {
   font-size: 10px;
   border-radius: 3px;
   position: relative;
@@ -590,6 +590,13 @@ input:checked + .slider .off
   cursor: pointer;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+
+/* button[type="button"],
+select{
+  padding:5px;
+  color: #CE5061;
+  font-size: 20px;
+} */
 
 /* submition button */
 

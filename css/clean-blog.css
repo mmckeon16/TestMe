@@ -580,9 +580,11 @@ input:checked + .slider .off
   font-family: 'Merienda', cursive;
   font-size: 20px;
   text-align: center;
+  margin: 125px;
 }
 
 .question {
+  margin: 125px;
   font-weight: 400;
   letter-spacing: 1px;
   border-radius: 4px;

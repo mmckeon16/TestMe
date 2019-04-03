@@ -97,11 +97,10 @@ function createRanking(){
 	var input = document.createElement("input");
 	var breakElem = document.createElement("br");
     input.type = "text";
-    input.name = "Ranking";
+    input.name = "ranking";
     input.placeholder = "Insert Ranking Question";
     input.required = true;
     container.appendChild(input);
-    
 
     var options = document.createElement("input");
     options.type = "text";

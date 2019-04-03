@@ -15,6 +15,7 @@ function createShortAnswer() {
 	// btn.onclick = deleteQuestion();
 	container.appendChild(btn);
 	container.appendChild(breakElem);
+	container.appendChild(breakElem);
 
     return false;
 }
@@ -36,7 +37,7 @@ function createLongAnswer() {
 	btn.type = "button";
 	// btn.onclick = deleteQuestion();
 	container.appendChild(breakElem);
-		// return false;
+	container.appendChild(breakElem);
 
 }
 
@@ -68,8 +69,7 @@ function createMC() {
 	// btn.onclick(deleteQuestion);
 
     container.appendChild(breakElem);
-    
-    return false;
+    container.appendChild(breakElem);
 }
 
 function createTrueFalse() {
@@ -89,6 +89,7 @@ function createTrueFalse() {
 	// btn.onclick = deleteQuestion();
 	container.appendChild(btn);
 	// btn.onclick(deleteQuestion);
+    container.appendChild(breakElem);
     container.appendChild(breakElem);
 }
 
@@ -118,8 +119,7 @@ function createRanking(){
 	// btn.onclick(deleteQuestion);
 
     container.appendChild(breakElem);
-    
-    return false;
+    container.appendChild(breakElem);
 }
 
 function makeMatch(){
@@ -147,7 +147,7 @@ function makeMatch(){
 
 	container.appendChild(deleteMatch);
 	container.appendChild(breakElem);
-
+	container.appendChild(breakElem);
 }
 
 function createMatching(){
@@ -200,6 +200,6 @@ function createMatching(){
 	// addMatch.onclick = makeMatch();
 
 	container.appendChild(breakElem);
-
+	container.appendChild(breakElem);
 
 }

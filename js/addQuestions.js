@@ -4,6 +4,7 @@ function createShortAnswer() {
 	var breakElem = document.createElement("br");
     input.type = "text";
     input.name = "shortAnswer";
+    input.id = "inputStyle";
     input.placeholder = "Insert Text for Short Answer";
     input.required = true;
     container.appendChild(input);
@@ -11,6 +12,7 @@ function createShortAnswer() {
 	// Delete question button
 	var btn = document.createElement("BUTTON");
 	btn.innerHTML = "DELETE";
+	btn.id = "deleteStyle";
 	btn.type = "button";
 	// btn.onclick = deleteQuestion();
 	container.appendChild(btn);
@@ -25,6 +27,7 @@ function createLongAnswer() {
 	var input = document.createElement("input");
 	var breakElem = document.createElement("br");
 	input.type = "text";
+	input.id = "inputStyle";
 	input.name = "longAnswer";
 	input.placeholder = "Insert Text for Long Answer";
 	input.required = true;
@@ -33,8 +36,9 @@ function createLongAnswer() {
 	// Delete question button
 	var btn = document.createElement("BUTTON");
 	btn.innerHTML = "DELETE";
-	container.appendChild(btn);
+	btn.id = "deleteStyle";
 	btn.type = "button";
+	container.appendChild(btn);
 	// btn.onclick = deleteQuestion();
 	container.appendChild(breakElem);
 	container.appendChild(breakElem);
@@ -48,6 +52,7 @@ function createMC() {
 	var breakElem = document.createElement("br");
     input.type = "text";
     input.name = "multipleChoice";
+    input.id = "inputStyle";
     input.placeholder = "Insert Multiple Choice Question";
     input.required = true;
     container.appendChild(input);
@@ -63,6 +68,7 @@ function createMC() {
 	// Delete question button
 	var btn = document.createElement("BUTTON");
 	btn.innerHTML = "DELETE";
+	btn.id = "deleteStyle";
 	btn.type = "button";
 	// btn.onclick = deleteQuestion();
 	container.appendChild(btn);
@@ -78,6 +84,7 @@ function createTrueFalse() {
 	var breakElem = document.createElement("br");
     input.type = "text";
     input.name = "trueFalse";
+    input.id = "inputStyle";
     input.placeholder = "Insert True False Question";
     input.required = true;
 	container.appendChild(input);
@@ -85,6 +92,7 @@ function createTrueFalse() {
 	// Delete question button
 	var btn = document.createElement("BUTTON");
 	btn.innerHTML = "DELETE";
+	btn.id = "deleteStyle";
 	btn.type = "button";
 	// btn.onclick = deleteQuestion();
 	container.appendChild(btn);
@@ -99,6 +107,7 @@ function createRanking(){
 	var breakElem = document.createElement("br");
     input.type = "text";
     input.name = "ranking";
+    input.id = "inputStyle";
     input.placeholder = "Insert Ranking Question";
     input.required = true;
     container.appendChild(input);
@@ -114,6 +123,7 @@ function createRanking(){
 	var btn = document.createElement("BUTTON");
 	btn.innerHTML = "DELETE";
 	btn.type = "button";
+	btn.id = "deleteStyle";
 	// btn.onclick = deleteQuestion();
 	container.appendChild(btn);
 	// btn.onclick(deleteQuestion);
@@ -130,8 +140,10 @@ function makeMatch(){
 	
 	deleteMatch.innerHTML = "Delete Match";
 	deleteMatch.type = "button";
+	deleteMatch.id = "deleteStyle";
 
 	input.type = "text";
+	input.id = "inputStyle";
     input.name = "match1";
     input.placeholder = "Insert Match";
     input.required = true;
@@ -165,6 +177,7 @@ function createMatching(){
 
 	// Input question prompt
     input.type = "text";
+    input.id = "inputStyle";
 	input.name = "Matching";
 	input.placeholder = "Insert Question Prompt";
 	input.required = true;
@@ -180,6 +193,7 @@ function createMatching(){
 	addMatch.type = "button";
 	deleteMatch.innerHTML = "Delete Match";
 	deleteMatch.type = "button";
+	deleteMatch.id = "deleteStyle";
 	addMatch.onclick = makeMatch();
 	container = document.getElementById("addedQuestions");
 	container.appendChild(addMatch);

@@ -74,9 +74,21 @@
     <div class="container" align = "center">
       <div class="test-border">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <h2>Create a Test or Survey Here!</h2>
+          <!-- <h2>Create a Test or Survey Here!</h2> -->
           <!-- Submission Form -->
           <form class="createSurvey" action="/upload" method="POST" enctype="multipart/form-data">
+            <div class="control-group">
+                <label class="switch">
+                  <input name = "surveyOption" type="checkbox" id="togBtn">
+                  <div class="slider round">
+                    <!--ADDED HTML -->
+                    <span class="on">TEST</span>
+                    <span class="off">SURVEY</span>
+                    <!--END-->
+                  </div>
+                </label>
+            </div>
+  
             <div class="control-group">
               <div class="input-tab">
                 <label class = "looks-good">Your Name</label>
@@ -93,6 +105,7 @@
               </div>
             </div>
 
+<<<<<<< HEAD
             <div class="control-group">
               <div class="input-tab">
                 <label class = "looks-good">Email</label>
@@ -113,6 +126,8 @@
               </label>
             </div>
 
+=======
+>>>>>>> a0fab705b5001c339b86896abfed610975371b8c
             <div class = "control-group">
               <div class = "question-input-field">
                 <label class = "looks-good">Question List</label>
@@ -138,9 +153,10 @@
             <div>
               <button type = "button" class = "question" id = "rankAns" onclick = "createRanking()"> Add Ranking Question </button>
             </div>
+            <!-- commenting out for demo
             <div>
               <button type = "button" class = "question" id = "matchAns" onclick = "createMatching()"> Add Matching Question </button>
-            </div>
+            </div> -->
 
             <!--File input -->
             <div class="control-group">
@@ -164,7 +180,7 @@
           <div class="col-lg-8 col-md-10 mx-auto">
             <ul class="list-inline text-center">
               <li class="list-inline-item">
-                <a href="https://github.com/mmckeon16/SSW-215-Project">
+                <a href="https://github.com/mmckeon16/TestMe">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>

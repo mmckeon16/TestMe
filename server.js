@@ -70,17 +70,16 @@ var con = mysql.createConnection({
 // EMAILS
 app.post('/send-email', function(req, res) {
   console.log(req.body);
-  console.log("here");
   let transporter = nodeMailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'testresourcestevens@gmail.com',
+      user: 'testsurveyssw322@gmail.com',
       pass: 'Stevens1870' //TODO Change this
     }
   });
   let mailOptions = {
     from: req.body.email, // sender address
-    to: 'testresourcestevens@gmail.com', // list of receivers
+    to: 'testsurveyssw322@gmail.com', // list of receivers
     subject: 'Mail from website form ' + req.body.firstname, // + " " +
     //req.body.lastname, // Subject line
     text: "FROM " + req.body.email + ":: " + req.body.message // plain text body
@@ -120,8 +119,6 @@ app.get('/post', function(req, res){
 
 app.get('/quiz', function(req, res){
 
-  console.log(req.query.creationCode);
-
   // make db call to get all info for this
   quiz.getQuizFromCode(req.query.creationCode, function(err, results){
       if(err){
@@ -130,7 +127,6 @@ app.get('/quiz', function(req, res){
               results: null
           });
       } else{
-          console.log(results.creatorName);
           res.render("quizInfo", {
               layout: 'quiz',
               results: results
@@ -179,7 +175,6 @@ app.post('/upload', function(req, res) {
   var description = req.body.description;
 
   var values = [[creatorName, creationCode, testName, surveyOption, questionList, responseList]];
-  console.log(values);
   var sql = "INSERT INTO theNewSurveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES ?";
   //var sql = "INSERT INTO theNewSurveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES("+creatorName+","+creationCode+", "+testName+", "+surveyOption+", "+(questionList)+", "+responseList+")";
 
@@ -189,7 +184,7 @@ app.post('/upload', function(req, res) {
       console.log(err.sql);
       throw err;
     }
-    console.log(result);
+    console.log("success");
   });
 
   res.sendFile(path.join(__dirname + '/submit.html'));

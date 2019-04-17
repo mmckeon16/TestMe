@@ -117,6 +117,29 @@ app.get('/post', function(req, res){
    
 });
 
+app.get('/records', function(req, res){
+
+  //console.log(req);
+
+    // make db call to get all info for this
+    quiz.getAllRecords(function(err, results){
+        if(err){
+            res.render("records", {
+                layout: 'main',
+                results: null
+            });
+        } else{
+
+             res.render("records", {
+                layout: 'main',
+                results: results
+            });
+         }
+
+    });
+   
+});
+
 app.get('/quiz', function(req, res){
 
   // make db call to get all info for this

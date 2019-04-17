@@ -1,0 +1,44 @@
+
+<!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-preview">
+              <h2 class="post-title">
+                Here are some Tests! <!--make second column for surveys-->
+              </h2>
+          </div>
+          <hr>
+
+          {{#each results}}
+          <div class="post-preview">
+            <a href="/quiz?creationCode={{this.creationCode}}">
+              <h2 class="post-title">
+                {{this.surveyName}}
+              </h2>
+            </a>
+            <p>
+            Taker: {{this.takeName}}
+            <br>
+            Code:{{this.takeCode}}
+            </p>
+           
+          </div>
+          <br>
+          <hr>
+
+          {{else}}
+            <p class="post-preview">
+            There are no tests to view right now
+            </p>  
+          {{/each}}
+
+          </div>
+          <hr>
+          <!-- Pager -->
+        </div>
+      </div>
+    </div>
+    <hr>
+    <script src="js/createQuestions.js"></script>
+

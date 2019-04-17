@@ -85,7 +85,7 @@ function createMC() {
 	btn.id = "deleteStyle";
 	btn.type = "button";
 	container.appendChild(btn);
-	btn.onclick = deleteQuestion('addedQuestions', 'input');
+	// btn.onclick = deleteQuestion('addedQuestions', 'input');
 	// btn.onclick(deleteQuestion);
 
     container.appendChild(breakElem);
@@ -176,11 +176,8 @@ function makeMatch(){
 	container.appendChild(deleteMatch);
 	container.appendChild(breakElem);
 	container.appendChild(breakElem);
-<<<<<<< HEAD
 
 
-=======
->>>>>>> a0fab705b5001c339b86896abfed610975371b8c
 }
 
 function createMatching(){

@@ -172,6 +172,7 @@ app.post('/upload', function(req, res) {
   var creatorName = req.body.creatorName;
   var creationCode = uuid.makeUUID();
   var testName = req.body.testName;
+  var userEmail = req.body.Email;
   var questionList = JSON.stringify(questions.createQuestions(req.body));
   var responseList = null;
   var surveyOption = "SURVEY";//req.body.surveyOption;

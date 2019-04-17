@@ -1,3 +1,17 @@
+// remove/delete function
+function deleteQuestion(parent, child){
+	if (child == parent){
+		alert("Cannot delete this question")
+	} else if (document.getElementById(child)) {     
+		var child = document.getElementById(child);
+		var parent = document.getElementById(parent);
+		parent.removeChild(child);
+	} else {
+		alert("Question has already been deleted or does not exist.");
+		return false;
+   }
+}
+
 function createShortAnswer() {
 	var container = document.getElementById("addedQuestions");
 	var input = document.createElement("input");
@@ -63,8 +77,8 @@ function createMC() {
 	var btn = document.createElement("BUTTON");
 	btn.innerHTML = "DELETE";
 	btn.type = "button";
-	// btn.onclick = deleteQuestion();
 	container.appendChild(btn);
+	btn.onclick = deleteQuestion('addedQuestions', 'input');
 	// btn.onclick(deleteQuestion);
 
     container.appendChild(breakElem);
@@ -124,10 +138,12 @@ function createRanking(){
 }
 
 function makeMatch(){
+	// var divElem = document.getElementById("div");
 	var container = document.getElementById("matching");
 	var input = document.createElement("input");
 	var breakElem = document.createElement("br");
 	var deleteMatch = document.createElement("BUTTON");
+	
 	
 	deleteMatch.innerHTML = "Delete Match";
 	deleteMatch.type = "button";
@@ -148,6 +164,8 @@ function makeMatch(){
 
 	container.appendChild(deleteMatch);
 	container.appendChild(breakElem);
+	container.appendChild(breakElem);
+
 
 }
 
@@ -187,19 +205,10 @@ function createMatching(){
 
 
 	container = document.getElementById("matching");
-
-	// container.appendChild(deleteMatch);
 	addMatch.onclick = function(){makeMatch()};
 	// container.appendChild(breakElem);
 	container.appendChild(divElem1);
-
-
 	container.appendChild(breakElem);
-
-	// container.appendChild(addMatch);
-	
-	// addMatch.onclick = makeMatch();
-
 	container.appendChild(breakElem);
 
 

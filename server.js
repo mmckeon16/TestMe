@@ -123,7 +123,30 @@ app.get("/find", function(req, res) {
   if(req.query.action == "take") {
     res.redirect("/quiz?creationCode="+req.query.creationCode);
   }
+
+});
   
+app.get('/records', function(req, res){
+
+  //console.log(req);
+
+    // make db call to get all info for this
+    quiz.getAllRecords(function(err, results){
+        if(err){
+            res.render("records", {
+                layout: 'main',
+                results: null
+            });
+        } else{
+
+             res.render("records", {
+                layout: 'main',
+                results: results
+            });
+         }
+
+    });
+
 });
 
 app.get('/quiz', function(req, res){
@@ -178,6 +201,7 @@ app.post('/upload', function(req, res) {
   var creatorName = req.body.creatorName;
   var creationCode = uuid.makeUUID();
   var testName = req.body.testName;
+  var userEmail = req.body.Email;
   var questionList = JSON.stringify(questions.createQuestions(req.body));
   var responseList = null;
   var surveyOption = "SURVEY";//req.body.surveyOption;

@@ -50,12 +50,6 @@ app.use(bodyParser.urlencoded());
 app.use("/", express.static(__dirname));
 app.use("/", express.static(path.join(__dirname + 'index')));
 
-app.use(upload({
-    limits: { fileSize: 5242880 }
-}));
-
-// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// app.set("view engine", "handlebars");
 app.engine('handlebars', hbsHelpers.engine);
 app.set('view engine', 'handlebars');
 
@@ -96,8 +90,6 @@ app.post('/send-email', function(req, res) {
 
 app.get('/post', function(req, res){
 
-  //console.log(req);
-
     // make db call to get all info for this
     quiz.getAllFiles(function(err, results){
         if(err){
@@ -117,7 +109,25 @@ app.get('/post', function(req, res){
    
 });
 
+app.get('/options', function(req, res) {
+  console.log("options: " + JSON.stringify(req.query));
+  res.render("takeOrGrade", {
+      layout: 'choose',
+      results: req
+  });
+  //res.redirect("/takeOrGrade.html?creationCode="+req.query.creationCode);
+});
+
+app.get("/find", function(req, res) {
+  console.log("find: " + JSON.stringify(req.query));
+  if(req.query.action == "take") {
+    res.redirect("/quiz?creationCode="+req.query.creationCode);
+  }
+  
+});
+
 app.get('/quiz', function(req, res){
+  console.log(req.query);
 
   // make db call to get all info for this
   quiz.getQuizFromCode(req.query.creationCode, function(err, results){

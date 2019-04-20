@@ -14,7 +14,3 @@ module.exports = {
     }
 
 }
-
-
-
-console.log(uuid);

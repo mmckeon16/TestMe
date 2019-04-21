@@ -46,6 +46,7 @@ var hbsHelpers = exphbs.create({
 // use bodyparser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
+app.use(express.urlencoded())
 
 app.use("/", express.static(__dirname));
 app.use("/", express.static(path.join(__dirname + 'index')));
@@ -110,7 +111,6 @@ app.get('/post', function(req, res){
 });
 
 app.get('/options', function(req, res) {
-  console.log("options: " + JSON.stringify(req.query));
   res.render("takeOrGrade", {
       layout: 'choose',
       results: req
@@ -119,7 +119,6 @@ app.get('/options', function(req, res) {
 });
 
 app.get("/find", function(req, res) {
-  console.log("find: " + JSON.stringify(req.query));
   if(req.query.action == "take") {
     res.redirect("/quiz?creationCode="+req.query.creationCode);
   }
@@ -128,7 +127,6 @@ app.get("/find", function(req, res) {
   
 app.get('/records', function(req, res){
 
-  //console.log(req);
 
     // make db call to get all info for this
     quiz.getAllRecords(function(err, results){
@@ -150,7 +148,6 @@ app.get('/records', function(req, res){
 });
 
 app.get('/quiz', function(req, res){
-  console.log(req.query);
 
   // make db call to get all info for this
   quiz.getQuizFromCode(req.query.creationCode, function(err, results){
@@ -169,8 +166,6 @@ app.get('/quiz', function(req, res){
   });
    
 });
-
-
 
 //File Uploading
 app.get("/", function(req, res) {
@@ -208,6 +203,7 @@ app.post('/upload', function(req, res) {
   var description = req.body.description;
 
   var values = [[creatorName, creationCode, testName, surveyOption, questionList, responseList]];
+  console.log(values);
   var sql = "INSERT INTO theNewSurveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES ?";
   //var sql = "INSERT INTO theNewSurveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES("+creatorName+","+creationCode+", "+testName+", "+surveyOption+", "+(questionList)+", "+responseList+")";
 
@@ -221,6 +217,34 @@ app.post('/upload', function(req, res) {
   });
 
   res.sendFile(path.join(__dirname + '/submit.html'));
+});
+
+app.post('/submitRecord', function(req, res) {
+
+  console.log(req.body);
+  // var creatorName = req.body.creatorName;
+  // var creationCode = uuid.makeUUID();
+  // var testName = req.body.testName;
+  // var userEmail = req.body.Email;
+  // var questionList = JSON.stringify(questions.createQuestions(req.body));
+  // var responseList = null;
+  // var surveyOption = "SURVEY";//req.body.surveyOption;
+  // var description = req.body.description;
+
+  // var values = [[creatorName, creationCode, testName, surveyOption, questionList, responseList]];
+  // var sql = "INSERT INTO theNewSurveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES ?";
+  // //var sql = "INSERT INTO theNewSurveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES("+creatorName+","+creationCode+", "+testName+", "+surveyOption+", "+(questionList)+", "+responseList+")";
+
+
+  // con.query(sql, [values], function (err, result) {
+  //   if (err) {
+  //     console.log(err.sql);
+  //     throw err;
+  //   }
+  //   console.log("success");
+  // });
+
+  // res.sendFile(path.join(__dirname + '/submit.html'));
 });
 
 app.get('*', function(req, res) {

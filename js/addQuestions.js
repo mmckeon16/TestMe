@@ -74,6 +74,7 @@ function createMC() {
 
     var options = document.createElement("input");
     options.type = "text";
+    options.id = "inputStyle";
     options.name = "mcOptions"
     options.placeholder = "enter options as semi-colon-separated list etc: op1; op2; op3";
     options.required = true;

@@ -8,6 +8,7 @@ var help = require('./js/getFiles');
 var quiz = require('./js/getQuizzes');
 var uuid = require('./js/UUIDs');
 var questions = require('./js/createQuestions');
+var uploader = require('./js/upload');
 
 var nodeMailer = require('nodemailer');
 
@@ -225,11 +226,11 @@ app.post('/submitRecord', function(req, res) {
   var takerName = req.body.takerName;
   var creationCode = req.body.creationCode;
   var responseList = JSON.stringify(req.body);
-  var surveyName = questions.getSurveyName(creationCode);
+  var surveyName = uploader.getSurveyName(creationCode);
   var surveyOption = "SURVEY";
 
   var values = [[takerName, creationCode, surveyName, surveyOption, responseList]];
-  var sql = "INSERT INTO responseList (takerName, creationCode, surveyOption, responseList) VALUES ?";
+  var sql = "INSERT INTO responseList2 (takerName, creationCode, surveyName, surveyOption, responseList) VALUES ?";
   // //var sql = "INSERT INTO theNewSurveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES("+creatorName+","+creationCode+", "+testName+", "+surveyOption+", "+(questionList)+", "+responseList+")";
 
 

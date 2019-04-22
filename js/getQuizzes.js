@@ -23,6 +23,19 @@ module.exports = {
 		});		
 	}, 
 
+	getAllRecords : function(creationCode, callback){
+		connection.query('SELECT * from responseList2 where creationCode = "'+creationCode+'"' , function(err, results, fields){
+			if(!err && results){
+				//there are tests, return the array
+				callback(null, results);
+			}else{
+				console.log("Error with data base!");
+				callback("Database error!", results);
+			}
+		});		
+	}, 
+
+
 	getQuizFromCode : function(creationCode, callback) {
 		connection.query('SELECT * from '+tableName+' where creationCode = "'+creationCode+'"' , function(err, results, fields){
 			if(!err && results){
@@ -33,6 +46,26 @@ module.exports = {
 
 				results = results[0];
 				//console.log(results);
+				callback(null, results);
+			}else{
+				console.log("Error with data base!");
+				callback("Database error!", results);
+			}
+		});		
+	},
+
+
+	getResponsesFromCode : function(takerName,creationCode, callback) {
+		connection.query('SELECT * from responseList2 where takerName = "'+takerName+'" and creationCode = "'+creationCode+'"' , function(err, results, fields){
+			if(!err && results){
+				//there are tests, return the array
+				console.log(results.length);
+				if(results[0].responseList != null){
+					results[0].responseList = JSON.parse(results[0].responseList);
+				}
+
+				results = results[0];
+				//console.log("results from db: "+JSON.stringify(results));
 				callback(null, results);
 			}else{
 				console.log("Error with data base!");

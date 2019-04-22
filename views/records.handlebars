@@ -1,28 +1,29 @@
-
+<!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/aboutstevens.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+              <h1>Responses for {{results.0.surveyName}}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 <!-- Main Content -->
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="post-preview">
-              <h2 class="post-title">
-                Here are some Taken Tests! <!--make second column for surveys-->
-              </h2>
-          </div>
           <hr>
-
           {{#each results}}
           <div class="post-preview">
-            <a href="/quiz?creationCode={{this.creationCode}}">
+            <a href="/submissions?takerName={{this.takerName}}&creationCode={{this.creationCode}}">
               <h2 class="post-title">
-                {{this.surveyName}}
+                Taker: {{this.takerName}}
               </h2>
             </a>
-            <p>
-            Taker: {{this.takeName}}
-            <br>
-            Code:{{this.takeCode}}
-            </p>
-           
+            <p>           
           </div>
           <br>
           <hr>
@@ -40,5 +41,4 @@
       </div>
     </div>
     <hr>
-    <script src="js/createQuestions.js"></script>
 

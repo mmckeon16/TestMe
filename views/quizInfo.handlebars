@@ -20,22 +20,24 @@
               <form action="/submitRecord" method="POST">
                 <h4> Your Name </h4>
                 <input type="text" name = "takerName"> 
+                <br>
+                <input type="text" name = "creationCode" value ="{{results.creationCode}}" hidden> </input>
                 {{#each results.questionList}}
                   <h4> {{this.question}} </h4>
                     {{#iff this.type "==" "shortAnswer"}}
-                      <input type="text" maxlength="50" name="shortAnswer" placeholder="Insert Answer for Short Answer" required=""> </input>
+                      <input type="text" maxlength="50" name="{{this.question}}" placeholder="Insert Answer for Short Answer" required=""> </input>
                     {{/iff}}
                     {{#iff this.type "==" "longAnswer"}}
-                      <textarea rows="4" cols="50" maxlength="500" name="longAnswer" placeholder="Insert Answer for Long Answer" required=""> </textarea>
+                      <textarea rows="4" cols="50" maxlength="500" name="{{this.question}}" placeholder="Insert Answer for Long Answer" required=""> </textarea>
                     {{/iff}}
                     {{#iff this.type "==" "multipleChoice"}}
                       {{#each this.options}}
-                        <input type="radio" name="multipleChoice" value={{this}}> {{this}}</input><br>
+                        <input type="radio" name="{{this.question}}" value={{this}}> {{this}}</input><br>
                       {{/each}}
                     {{/iff}}
                     {{#iff this.type "==" "trueFalse"}}
-                      <input type="radio" name="trueFalse" value="true"> True</input><br>
-                      <input type="radio" name="trueFalse" value="false"> False</input><br>
+                      <input type="radio" name="{{this.question}}" value="true"> True</input><br>
+                      <input type="radio" name="{{this.question}}" value="false"> False</input><br>
                     {{/iff}}
                     {{#iff this.type "==" "ranking"}}
                       {{#each this.options}}

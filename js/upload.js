@@ -1,13 +1,12 @@
 var mysql      = require('mysql');
-var AWS = require('aws-sdk');
-// var awsmod = require('./awsmodule.js');
 
+ 
+ //USE THIS CONNECTION, WHEN CREATING DB ON MYSQL, KNOW USER AND DB NAME. MAY HAVE TO ADD A PASSWORD
 var connection = mysql.createConnection({
   host     : 'localhost',
-  port     :'8000',
-  user     : 'mmckeon',
-  password : 'ssw215',
-  database : 'tests'
+  port     :'3306',
+  user     : 'root',
+  database : 'testdb'
 });
 
 var db = "tests";
@@ -21,13 +20,13 @@ var db = "tests";
 //   console.log('connected as id ' + connection.threadId);
 // });
 
-connection.query('CREATE table tests(testname VARCHAR(40) NOT NULL, profname VARCHAR(40) NOT NULL,coursename VARCHAR(40) NOT NULL, year INT NOT NULL)', function(err, results, fields){
-  if(err){
-    console.log(err);
-  } else {
-    console.log("success!");
-  }
-});
+// connection.query('CREATE table tests(testname VARCHAR(40) NOT NULL, profname VARCHAR(40) NOT NULL,coursename VARCHAR(40) NOT NULL, year INT NOT NULL)', function(err, results, fields){
+//   if(err){
+//     console.log(err);
+//   } else {
+//     console.log("success!");
+//   }
+// });
 
 module.exports = {
 
@@ -49,6 +48,22 @@ module.exports = {
   		//got all the info add to db now
   		return true;
   	}
+  },
+
+  getSurveyName: function(creationCode) {
+    connection.query('SELECT surveyName from theNewSurveyList where creationCode = "'+creationCode+'"' , function(err, results, fields){
+        if(!err && results){
+          //there are tests, return the array
+          console.log(results[0].surveyName);
+          if(results[0] != null){
+            results = results[0].surveyName;
+          }    
+          console.log(results); 
+          return results;
+        }else{
+          console.log("Error with data base!");
+        }
+      }); 
   }
 
 }

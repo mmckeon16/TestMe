@@ -454,7 +454,7 @@ footer .copyright {
 /* submit.html basic layout and design */
 
 .test-border {
-  background-color:rgb(189, 157, 157);
+  background-color: rgb(190, 194, 203);
   border-radius: 10px;
   margin: auto;
   width: 90%;
@@ -473,7 +473,7 @@ footer .copyright {
   width: 100%;
   padding: 0px;
   border: 2px solid var(--light-grey);
-  background-color: rgb(189, 157, 157);
+  background-color: rgb(190, 194, 203);
   border-bottom: 3px solid #980000ff;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 18px;
@@ -591,7 +591,7 @@ button[type="button"] {
   border: 2px solid #FFF8EA;
   color: #A22347;
   display: inline-block;
-  height: 35px;
+  height: 25px;
   width: 250px;
   cursor: pointer;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -647,7 +647,7 @@ select{
 #inputStyle {
   font-size: 20px;
   border: 2px solid var(--light-grey);
-  background-color: rgb(189, 157, 157);
+  background-color: rgb(190, 194, 203);
   border-bottom: 3px solid #980000ff;;
   border-color: #FFF8EA;
   width: 100%;
@@ -658,20 +658,41 @@ select{
 #deleteStyle{
   color: #fff;
   font-weight: 600;
-  background-color: rgb(189, 157, 157);
+  background-color: rgb(190, 194, 203);
   border-color: #A22347;
   width: 20%;
   margin: 7px;
 }
 
 .getCodeStyle {
-  text-align: justify;
+  display: inline-block;
+  text-align: center;
   font-size: 20px;
   border: 2px solid var(--light-grey);
   border-bottom: 3px solid grey;
   border-radius: 2px;
   background-color: none;
-  width: 40%;
+  width: 400px;
   height: 40px;
-  padding: 2px;
+  padding: 0px;
+}
+
+.codeEnter {
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  border: 3px solid #A22347;
+  border-radius: 4px;
+  background-color: #fff;
+  width: 25%;
+  height: 30px;
+  padding: 0px;
+  margin-top: 30px;
+}
+
+.codeEnter:hover, .btn-primary:focus, .btn-primary:active {
+  color: #fff;
+  background-color: #CE5061 !important;
+  border-color: #A22347 !important;
 }

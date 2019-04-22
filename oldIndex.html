@@ -74,10 +74,16 @@
 
     <!-- Main Content -->
     <div class="container" align = "center">
-      <div>
-        <input type = "text" class = "getCodeStyle" placeholder="Please input the code to take a test">
-      </div>
-    </div>
+        <form action="/code" method="POST">
+          <div>
+            <input type = "text" class = "getCodeStyle" placeholder="Please input the code to take a test">
+          </div>
+
+          <div>
+            <input type='submit' value = 'Enter' class="codeEnter" />
+          </div>
+        </form>
+    </div>    
 
     <!-- Footer -->
     <footer>

@@ -60,7 +60,7 @@ a {
 }
 
 a:focus, a:hover {
-  color: #0085A1;
+  color: #FF8C77;
 }
 
 blockquote {
@@ -87,13 +87,13 @@ blockquote {
 
 ::-moz-selection {
   color: #fff;
-  background: #0085A1;
+  background: #FF8C77;
   text-shadow: none;
 }
 
 ::selection {
   color: #fff;
-  background: #0085A1;
+  background: #FF8C77;
   text-shadow: none;
 }
 
@@ -182,13 +182,13 @@ img::-moz-selection {
     color: #212529;
   }
   #mainNav.is-fixed .navbar-brand:focus, #mainNav.is-fixed .navbar-brand:hover {
-    color: #0085A1;
+    color: #FF8C77;
   }
   #mainNav.is-fixed .navbar-nav > li.nav-item > a {
     color: #212529;
   }
   #mainNav.is-fixed .navbar-nav > li.nav-item > a:focus, #mainNav.is-fixed .navbar-nav > li.nav-item > a:hover {
-    color: #0085A1;
+    color: #FF8C77;
   }
   #mainNav.is-visible {
     /* if the user changes the scrolling direction, we show the header */
@@ -400,7 +400,7 @@ header.masthead .post-heading .meta a {
 }
 
 .floating-label-form-group-with-focus label {
-  color: #0085A1;
+  color: #FF8C77;
 }
 
 form .form-group:first-child .floating-label-form-group {
@@ -455,7 +455,7 @@ footer .copyright {
 
 .test-border {
   background-color:rgb(189, 157, 157);
-  border-radius: 20px;
+  border-radius: 10px;
   margin: auto;
   width: 90%;
   padding: 1em;
@@ -464,20 +464,19 @@ footer .copyright {
 
 .input-tab {
   display: inline-block;
-  text-align: center;
+  text-align: justify;
   width: 80%;
 }
 
 .input-field {
   display: inline-block;
   width: 100%;
-  padding: 5px;
-  margin: 18px 0 0 10px;
+  padding: 0px;
   border: 2px solid var(--light-grey);
   background-color: rgb(189, 157, 157);
   border-bottom: 3px solid #980000ff;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .question-input-field {
@@ -572,12 +571,19 @@ input:checked + .slider .off
 
 .looks-good {
   font-family: 'Merienda', cursive;
-  font-size: 15px;
+  font-size: 20px;
+  text-align: justify;
+  padding: 1px;
+}
+
+.looks-question {
+  font-family: 'Merienda', cursive;
+  font-size: 30px;
   text-align: justify;
 }
 
 button[type="button"] {
-  font-size: 10px;
+  font-size: 12px;
   border-radius: 3px;
   position: relative;
   padding: 0px;
@@ -585,8 +591,8 @@ button[type="button"] {
   border: 2px solid #FFF8EA;
   color: #A22347;
   display: inline-block;
-  height: 30px;
-  width: 200px;
+  height: 35px;
+  width: 250px;
   cursor: pointer;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -609,13 +615,13 @@ select{
   display: inline-block;
   padding: 0px;
   position: relative;
-  width: 40%;
-  height: 25px;
+  width: 45%;
+  height: 40px;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   border: 3px solid #FFF8EA;
-  font-size: 10px;
+  font-size: 16px;
   color: #FCE2AB;
   text-align: center;
   background: none;
@@ -636,4 +642,36 @@ select{
 
 .btn-lg {
   font-size: 16px;
+}
+
+#inputStyle {
+  font-size: 20px;
+  border: 2px solid var(--light-grey);
+  background-color: rgb(189, 157, 157);
+  border-bottom: 3px solid #980000ff;;
+  border-color: #FFF8EA;
+  width: 100%;
+  height: 30px;
+  padding: 2px;
+}
+
+#deleteStyle{
+  color: #fff;
+  font-weight: 600;
+  background-color: rgb(189, 157, 157);
+  border-color: #A22347;
+  width: 20%;
+  margin: 7px;
+}
+
+.getCodeStyle {
+  text-align: justify;
+  font-size: 20px;
+  border: 2px solid var(--light-grey);
+  border-bottom: 3px solid grey;
+  border-radius: 2px;
+  background-color: none;
+  width: 40%;
+  height: 40px;
+  padding: 2px;
 }

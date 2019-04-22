@@ -227,6 +227,7 @@ app.post('/submitRecord', function(req, res) {
   var creationCode = req.body.creationCode;
   var responseList = JSON.stringify(req.body);
   var surveyName = uploader.getSurveyName(creationCode);
+  console.log(surveyName);
   var surveyOption = "SURVEY";
 
   var values = [[takerName, creationCode, surveyName, surveyOption, responseList]];

@@ -50,18 +50,18 @@ module.exports = {
   	}
   },
 
-  getSurveyName: function(creationCode) {
+  getSurveyName: function(creationCode, callback) {
     connection.query('SELECT surveyName from theNewSurveyList where creationCode = "'+creationCode+'"' , function(err, results, fields){
         if(!err && results){
           //there are tests, return the array
-          console.log(results[0].surveyName);
           if(results[0] != null){
             results = results[0].surveyName;
           }    
-          console.log(results); 
-          return results;
+          console.log(results);
+          callback(null, results);
         }else{
           console.log("Error with data base!");
+          callback("Database error!", results);
         }
       }); 
   }

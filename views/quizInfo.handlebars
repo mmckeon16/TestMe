@@ -24,6 +24,7 @@
                 <input type="text" name = "creationCode" value ="{{results.creationCode}}" hidden> </input>
                 {{#each results.questionList}}
                   <h4> {{this.question}} </h4>
+                  {{setVar "question" this.question}}
                     {{#iff this.type "==" "shortAnswer"}}
                       <input type="text" maxlength="50" name="{{this.question}}" placeholder="Insert Answer for Short Answer" required=""> </input>
                     {{/iff}}
@@ -32,7 +33,7 @@
                     {{/iff}}
                     {{#iff this.type "==" "multipleChoice"}}
                       {{#each this.options}}
-                        <input type="radio" name="{{this.question}}" value={{this}}> {{this}}</input><br>
+                        <input type="radio" name="{{question}}" value={{this}}> {{this}}</input><br>
                       {{/each}}
                     {{/iff}}
                     {{#iff this.type "==" "trueFalse"}}
@@ -41,7 +42,7 @@
                     {{/iff}}
                     {{#iff this.type "==" "ranking"}}
                       {{#each this.options}}
-                        <input size="2" maxlength="2" type="text" name="ranking"></input>
+                        <input size="2" maxlength="2" type="text" name="{{question}}, {{this}}"></input>
                         {{this}}
                         <br>
                       {{/each}}

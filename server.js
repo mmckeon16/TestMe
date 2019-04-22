@@ -1,7 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var upload = require('express-fileupload');
-//const exphbs = require("express-handlebars");
 var app = express();
 var path = require('path');
 var help = require('./js/getFiles');
@@ -13,6 +12,7 @@ var uploader = require('./js/upload');
 var nodeMailer = require('nodemailer');
 
 var mysql = require('mysql');
+
 
 var exphbs = require('express-handlebars');
 var hbsHelpers = exphbs.create({
@@ -39,10 +39,17 @@ var hbsHelpers = exphbs.create({
         }
       }
     },
+    setVar: function(varName, varValue, opts) {
+      return opts.data.root[varName] = varValue;
+    },
     defaultLayout: 'layout'
 });
 
+var handlebars = require('handlebars');
 
+handlebars.registerHelper("setVar", function(varName, varValue, opts) {
+  opts.data.root[varName] = varValue;
+});
 
 // use bodyparser
 app.use(bodyParser.json());
@@ -123,23 +130,24 @@ app.get("/find", function(req, res) {
   if(req.query.action == "take") {
     res.redirect("/quiz?creationCode="+req.query.creationCode);
   }
+  if(req.query.action = "submissions") {
+    res.redirect("records?creationCode="+req.query.creationCode);
+  }
 
 });
   
 app.get('/records', function(req, res){
 
-
     // make db call to get all info for this
-    quiz.getAllRecords(function(err, results){
+    quiz.getAllRecords(req.query.creationCode, function(err, results){
         if(err){
             res.render("records", {
-                layout: 'main',
+                layout: 'quiz',
                 results: null
             });
         } else{
-
-             res.render("records", {
-                layout: 'main',
+            res.render("records", {
+                layout: 'quiz',
                 results: results
             });
          }
@@ -152,6 +160,7 @@ app.get('/quiz', function(req, res){
 
   // make db call to get all info for this
   quiz.getQuizFromCode(req.query.creationCode, function(err, results){
+      console.log(results);
       if(err){
           res.render("quizInfo", {
               layout: 'quiz',
@@ -159,6 +168,27 @@ app.get('/quiz', function(req, res){
           });
       } else{
           res.render("quizInfo", {
+              layout: 'quiz',
+              results: results
+          });
+       }
+
+  });
+   
+});
+
+app.get('/submissions', function(req, res){
+
+  // make db call to get all info for this
+  quiz.getResponsesFromCode(req.query.takerName, req.query.creationCode, function(err, results){
+      if(err){
+          res.render("submissions", {
+              layout: 'quiz',
+              results: null
+          });
+      } else{
+          console.log(results);
+          res.render("submissions", {
               layout: 'quiz',
               results: results
           });
@@ -226,24 +256,28 @@ app.post('/submitRecord', function(req, res) {
   var takerName = req.body.takerName;
   var creationCode = req.body.creationCode;
   var responseList = JSON.stringify(req.body);
-  var surveyName = uploader.getSurveyName(creationCode);
-  console.log(surveyName);
+  var surveyName = null;
   var surveyOption = "SURVEY";
 
-  var values = [[takerName, creationCode, surveyName, surveyOption, responseList]];
-  var sql = "INSERT INTO responseList2 (takerName, creationCode, surveyName, surveyOption, responseList) VALUES ?";
-  // //var sql = "INSERT INTO theNewSurveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES("+creatorName+","+creationCode+", "+testName+", "+surveyOption+", "+(questionList)+", "+responseList+")";
-
-
-  con.query(sql, [values], function (err, result) {
-    if (err) {
-      console.log(err.sql);
-      throw err;
+  uploader.getSurveyName(creationCode, function(err, results) {
+    if(!err){
+      surveyName = results;
     }
-    console.log("success");
-  });
+      console.log(surveyName);
 
-  //res.sendFile(path.join(__dirname + '/submit.html'));
+      var values = [[takerName, creationCode, surveyName, surveyOption, responseList]];
+      var sql = "INSERT INTO responseList2 (takerName, creationCode, surveyName, surveyOption, responseList) VALUES ?";
+      con.query(sql, [values], function (err, result) {
+        if (err) {
+          console.log(err.sql);
+          throw err;
+        }
+        console.log("success");
+      });
+
+    res.redirect("records?creationCode="+creationCode);
+  });
+  
 });
 
 app.get('*', function(req, res) {

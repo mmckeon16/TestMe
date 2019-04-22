@@ -1,0 +1,37 @@
+<!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/aboutstevens.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+              <h1>Response for {{results.surveyName}} by {{results.takerName}}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    {{#each results.responseList}}
+    <div class="post-preview">
+      <h2>
+        {{@key}}
+      </h2>
+      <p>
+        {{this}}
+      </p>
+    </div>
+    <hr>
+
+    {{else}}
+      <p class="post-preview">
+      There are no tests to view right now
+      </p>  
+    {{/each}}
+
+    </div>
+    <hr>
+    <!-- Pager -->
+  </div>
+</div>
+</div>

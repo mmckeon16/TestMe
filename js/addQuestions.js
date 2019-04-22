@@ -130,6 +130,7 @@ function createRanking(){
     var options = document.createElement("input");
     options.type = "text";
     options.name = "rankingOptions"
+    options.id = "inputStyle";
     options.placeholder = "enter options as semi-colon-separated list etc: op1; op2; op3";
     options.required = true;
 	container.appendChild(options);

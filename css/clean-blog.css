@@ -455,7 +455,7 @@ footer .copyright {
 
 .test-border {
   background-color:rgb(189, 157, 157);
-  border-radius: 20px;
+  border-radius: 10px;
   margin: auto;
   width: 90%;
   padding: 1em;
@@ -464,20 +464,19 @@ footer .copyright {
 
 .input-tab {
   display: inline-block;
-  text-align: center;
+  text-align: justify;
   width: 80%;
 }
 
 .input-field {
   display: inline-block;
   width: 100%;
-  padding: 5px;
-  margin: 18px 0 0 10px;
+  padding: 0px;
   border: 2px solid var(--light-grey);
   background-color: rgb(189, 157, 157);
   border-bottom: 3px solid #980000ff;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 25px;
+  font-size: 18px;
 }
 
 .question-input-field {
@@ -572,7 +571,14 @@ input:checked + .slider .off
 
 .looks-good {
   font-family: 'Merienda', cursive;
-  font-size: 22px;
+  font-size: 20px;
+  text-align: justify;
+  padding: 1px;
+}
+
+.looks-question {
+  font-family: 'Merienda', cursive;
+  font-size: 30px;
   text-align: justify;
 }
 
@@ -652,7 +658,7 @@ select{
 #deleteStyle{
   color: #fff;
   font-weight: 600;
-  background-color: #CE5061;
+  background-color: rgb(189, 157, 157);
   border-color: #A22347;
   width: 20%;
   margin: 7px;

@@ -222,29 +222,26 @@ app.post('/upload', function(req, res) {
 app.post('/submitRecord', function(req, res) {
 
   console.log(req.body);
-  // var creatorName = req.body.creatorName;
-  // var creationCode = uuid.makeUUID();
-  // var testName = req.body.testName;
-  // var userEmail = req.body.Email;
-  // var questionList = JSON.stringify(questions.createQuestions(req.body));
-  // var responseList = null;
-  // var surveyOption = "SURVEY";//req.body.surveyOption;
-  // var description = req.body.description;
+  var takerName = req.body.takerName;
+  var creationCode = req.body.creationCode;
+  var responseList = JSON.stringify(req.body);
+  var surveyName = questions.getSurveyName(creationCode);
+  var surveyOption = "SURVEY";
 
-  // var values = [[creatorName, creationCode, testName, surveyOption, questionList, responseList]];
-  // var sql = "INSERT INTO theNewSurveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES ?";
+  var values = [[takerName, creationCode, surveyName, surveyOption, responseList]];
+  var sql = "INSERT INTO responseList (takerName, creationCode, surveyOption, responseList) VALUES ?";
   // //var sql = "INSERT INTO theNewSurveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES("+creatorName+","+creationCode+", "+testName+", "+surveyOption+", "+(questionList)+", "+responseList+")";
 
 
-  // con.query(sql, [values], function (err, result) {
-  //   if (err) {
-  //     console.log(err.sql);
-  //     throw err;
-  //   }
-  //   console.log("success");
-  // });
+  con.query(sql, [values], function (err, result) {
+    if (err) {
+      console.log(err.sql);
+      throw err;
+    }
+    console.log("success");
+  });
 
-  // res.sendFile(path.join(__dirname + '/submit.html'));
+  //res.sendFile(path.join(__dirname + '/submit.html'));
 });
 
 app.get('*', function(req, res) {

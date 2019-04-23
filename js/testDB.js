@@ -6,6 +6,7 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   port     :'3306',
   user     : 'root',
+  // password : 'Angelica1208!',
   database : 'testdb'
 });
 
@@ -34,22 +35,22 @@ connection.connect(function(err) {
 });
 
 /*STEP 1: USE THIS TO CREATE NEW TEST RESOURCE TABle*/
-// connection.query('CREATE table '+tableName+'('+creatorName+', '+creationCode+', '+surveyName+', '+surveyOrTest+', '+questions+', '+responses+')', function(err, results, fields){
-// 	if(err){
-// 		console.log(err);
-// 	} else {
-// 		console.log("success!");
-// 	}
-// });
+connection.query('CREATE table '+tableName+'('+creatorName+', '+creationCode+', '+surveyName+', '+surveyOrTest+', '+questions+', '+responses+')', function(err, results, fields){
+	if(err){
+		console.log(err);
+	} else {
+		console.log("success!");
+	}
+});
 
 /*STEP 2: USE THIS TO CREATE NEW Response TABle*/
-connection.query('CREATE table '+tableName2+'('+takerName+', '+creationCode+', '+surveyName +','+surveyOrTest+', '+responses+')', function(err, results, fields){
- if(err){
-   console.log(err);
- } else {
-   console.log("success!");
- }
-});
+// connection.query('CREATE table '+tableName2+'('+takerName+', '+creationCode+', '+surveyName +','+surveyOrTest+', '+responses+')', function(err, results, fields){
+//  if(err){
+//    console.log(err);
+//  } else {
+//    console.log("success!");
+//  }
+// });
 
 
 // connection.query('SELECT * from '+tableName+' where creationCode = "a4c4f4c4-64d7-4c60-8ac5-d058a4280889"', function(err, results, fields) {

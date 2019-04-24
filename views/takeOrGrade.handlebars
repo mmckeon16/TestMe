@@ -1,16 +1,39 @@
 
     <!-- Main Content -->
-    <div class="container">
+    <div class="containera">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <form action="/find" method="GET" enctype="multipart/form-data">
             <input name = "creationCode" value = {{results.query.creationCode}} hidden></input><br>
-            <input type="radio" name="action" value="take"> Take</input> <br>
-            <input type="radio" name="action" value="grade"> Grade</input><br>
-            <input type="radio" name="action" value="answer"> Answer Key</input><br>
-            <input type="radio" name="action" value="edit"> Edit</input><br>
-            <input type="radio" name="action" value="submissions">View Submissions</input><br>
-            <button>Go</button>
+
+            <ul>
+              <li>
+                <input type="radio" name="action" id ="take" value="take">
+                <label for = "take"> Take </label>
+                <div class="check"></div>
+              </li>
+              <li>
+                <input type="radio" name="action" id ="grade" value="grade">
+                <label for = "grade"> Grade </label></input>
+                <div class="check"></div>
+              </li>
+              <li>
+                <input type="radio" name="action" id ="answer" value="answer">
+                <label for = "answer"> Answer </label>
+                <div class="check"></div>
+              </li>
+              <li>
+                <input type="radio" name="action" id="edit" value="edit">
+                <label for = "edit"> Edit </label>
+                <div class="check"></div>
+              </li>
+              <li>
+                <input type="radio" name="action" id = "submissions" value="submissions">
+                <label for="submissions">View Submissions</label>
+                <div class="check"></div><br>
+              </li>
+            </ul>
+            <button class="btnGo btn-primary">Go</button>
           </form>
         </div>
       </div>

@@ -1,25 +1,29 @@
 
     <!-- Main Content -->
-    <div class="container" >
+    <div class="containera">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <form action="/find" method="GET" enctype="multipart/form-data">
             <input name = "creationCode" value = {{results.query.creationCode}} hidden></input><br>
             <ul>
               <li>
-                <input type="radio" name="action" value="take"><label> Take </label></input>
+                <input type="radio" name="action" id ="take" value="take">
+                <label for = "take"> Take </label>
                 <div class="check"></div>
-              </li><br> 
+              </li>
               <li>
-                <input type="radio" name="action" value="grade"><label> Grade </label></input>
+                <input type="radio" name="action" id ="grade" value="grade">
+                <label for = "grade"> Grade </label></input>
                 <div class="check"></div>
-              </li><br>
+              </li>
               <li>
-                <input type="radio" name="action" value="edit"><label> Edit </label></input><br>
+                <input type="radio" name="action" id="edit" value="edit">
+                <label for = "edit"> Edit </label>
                 <div class="check"></div>
-              </li><br>
+              </li>
               <li>
-                <input type="radio" name="action" value="submissions"><label>View Submissions</label></input>
+                <input type="radio" name="action" id = "submissions" value="submissions">
+                <label for="submissions">View Submissions</label>
                 <div class="check"></div><br>
               </li>
             </ul>

@@ -72,5 +72,16 @@ module.exports = {
 				callback("Database error!", results);
 			}
 		});		
+	},
+
+	getTestSurveyOption: function(creationCode, callback) {
+		connection.query('SELECT surveyOption from '+tableName+' where creationCode = "'+creationCode+'"', function(err, results, fields) {
+			if(!err && results){
+				return results[0];
+			} else {
+				console.log("Error with data base!");
+				callback("Database error!", results);
+			}
+		});
 	}
 };

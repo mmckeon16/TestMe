@@ -1,3 +1,20 @@
+ <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>Edit below!</h1>
+              <h2 class="subheading">Retype questions or add new ones!</h2>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
  <!-- Main Content -->
     <div class="container" align = "center">
       <div class="test-border">
@@ -5,20 +22,11 @@
           <!-- <h2>Create a Test or Survey Here!</h2> -->
           <!-- Submission Form -->
 
-          <form class="createSurvey" action="/upload" method="POST">
-            <div class="control-group">
-                <label class="switch">
-                  <input name = "surveyOption" type="checkbox" id="togBtn">
-                  <div class="slider round">
-                    <!--END-->
-                  </div>
-                </label>
-            </div>
-  
+          <form class="createSurvey" action="/reupload" method="POST">
             <div class="control-group">
               <div class="input-tab">
                 <label class = "looks-good">Your Name</label>
-                <input class = "input-field" type="text"  maxlength="40" class="form-control" value={{this.creatorName}} name="creatorName" required data-validation-required-message="Please enter your name.">
+                <input class = "input-field" type="text"  maxlength="40" class="form-control" value="{{results.creatorName}}" name="creatorName" required data-validation-required-message="Please enter your name.">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
@@ -26,16 +34,40 @@
             <div class="control-group">
               <div class="input-tab">
                 <label class = "looks-good">Form Name</label>
-                <input class = "input-field" type="text" maxlength="40" class="form-control" placeholder={{this.creatorName}} name="testName" required data-validation-required-message="Please enter a test name.">
+                <input class = "input-field" type="text" maxlength="40" class="form-control" value="{{results.surveyName}}" name="testName" required data-validation-required-message="Please enter a test name.">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
+            <input type = "text" name = "creationCode" value = "{{results.creationCode}}" hidden></input>
+            <input type = "text" name = "surveyOption" value = "{{results.surveyOption}}" hidden></input>
+            
 
             <div class = "control-group">
               <div class = "question-input-field">
                 <label class = "looks-good">Question List</label>
                 <div id="addedQuestions">
-
+                  {{#each results.questionList}}
+                    {{question1}}
+                      {{#iff this.type "==" "shortAnswer"}}
+                        <input type="text" name="shortAnswer" id="inputStyle" value="{{this.question}}" required="">
+                      {{/iff}}
+                      {{#iff this.type "==" "longAnswer"}}
+                        <input type="text" id="inputStyle" name="longAnswer" value="{{this.question}}" required="">
+                      {{/iff}}
+                      {{#iff this.type "==" "multipleChoice"}}
+                        <input type="text" name="multipleChoice" id="inputStyle" value="{{this.question}}" required="">
+                        <input type="text" id="inputStyle" name="mcOptions" value="{{this.options}}" required="">
+                      {{/iff}}
+                      {{#iff this.type "==" "trueFalse"}}
+                        <input type="text" name="trueFalse" id="inputStyle" value="{{this.question}}" required="">
+                      {{/iff}}
+                      {{#iff this.type "==" "ranking"}}
+                        <input type="text" name="ranking" id="inputStyle" value="{{this.question}}" required="">
+                        <input type="text" name="rankingOptions" id="inputStyle" value="{{this.options}}" required="">
+                      {{/iff}}
+                      <br>
+                      <br>
+                  {{/each}}
                 </div>
               </div>
             </div>
@@ -75,38 +107,3 @@
     </div>
 
     <hr>
-
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <ul class="list-inline text-center">
-              <li class="list-inline-item">
-                <a href="https://github.com/mmckeon16/TestMe">
-                  <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-            </ul>
-            <p class="copyright text-muted">TestMe 2019</p>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="js/addQuestions.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="js/clean-blog.min.js"></script>
-
-  </body>
-
-</html>

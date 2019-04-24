@@ -6,7 +6,7 @@
             <div class="col-lg-8 col-md-10 mx-auto">
               <div class="page-heading">
                 <h1>{{results.surveyName}}</h1>
-                <h3>by {{results.creatorName}}</h3>
+                <h3>by {{results.creatorName}} for Answer Key</h3>
               </div>
             </div>
           </div>
@@ -17,10 +17,7 @@
       <div class = "container">
         <div class="test-border">
             <div class="col-lg-8 col-md-10 mx-auto">
-              <form action="/submitRecord" method="POST">
-                <h4> Your Name </h4>
-                <input type="text" name = "takerName"> 
-                <br>
+              <form action="/answers" method="POST">
                 <input type="text" name = "creationCode" value ="{{results.creationCode}}" hidden> </input>
                 {{#each results.questionList}}
                   <h4> {{this.question}} </h4>

@@ -1,15 +1,22 @@
 // remove/delete function
-function deleteQuestion(parent, child){
-	if (child == parent){
-		alert("Cannot delete this question")
-	} else if (document.getElementById(child)) {     
-		var child = document.getElementById(child);
-		var parent = document.getElementById(parent);
-		parent.removeChild(child);
-	} else {
-		alert("Question has already been deleted or does not exist.");
-		return false;
-   }
+function deleteQuestion(){
+	var element = document.getElementById("inputStyle");
+	element.parentNode.removeChild(element);
+
+	var element = document.getElementById("inputStyle");
+	element.parentNode.removeChild(element);
+
+	this.remove()
+	// if (child == parent){
+	// 	alert("Cannot delete this question")
+	// } else if (document.getElementById(child)) {     
+	// 	var child = document.getElementById(child);
+	// 	var parent = document.getElementById(parent);
+	// 	parent.removeChild(child);
+	// } else {
+	// 	alert("Question has already been deleted or does not exist.");
+	// 	return false;
+//    }
 }
 
 function createShortAnswer() {
@@ -75,7 +82,7 @@ function createMC() {
     var options = document.createElement("input");
     options.type = "text";
     options.id = "inputStyle";
-    options.name = "mcOptions"
+    options.name = "mcOptions";
     options.placeholder = "enter options as semi-colon-separated list etc: op1; op2; op3";
     options.required = true;
 	container.appendChild(options);
@@ -86,7 +93,7 @@ function createMC() {
 	btn.id = "deleteStyle";
 	btn.type = "button";
 	container.appendChild(btn);
-	// btn.onclick = deleteQuestion('addedQuestions', 'input');
+	btn.onclick = deleteQuestion;
 	// btn.onclick(deleteQuestion);
 
     container.appendChild(breakElem);

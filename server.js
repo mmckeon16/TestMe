@@ -122,14 +122,13 @@ app.get('/options', function(req, res) {
       layout: 'choose',
       results: req
   });
-  //res.redirect("/takeOrGrade.html?creationCode="+req.query.creationCode);
 });
 
 app.get("/find", function(req, res) {
   if(req.query.action == "take") {
     res.redirect("/quiz?creationCode="+req.query.creationCode);
   }
-
+  console.log(req.query.action);
   if(req.query.action == "edit") {
     res.redirect("/edit?creationCode="+req.query.creationCode);
   }

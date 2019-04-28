@@ -18,9 +18,9 @@ function createShortAnswer() {
 
 	buttonWrapper.type = "button";
 	buttonWrapper.id = "buttonWrapper";
+	buttonWrapper.onclick = function() { changeId(this); };
 
  	container.appendChild(buttonWrapper);
-	var buttonContainer = document.getElementById("buttonWrapper");
 
 	var input = document.createElement("input");
 	var breakElem = document.createElement("br");
@@ -31,23 +31,18 @@ function createShortAnswer() {
     input.placeholder = "Insert Text for Short Answer";
     input.required = true;
 
-    buttonContainer.appendChild(input);
-
-	// Delete question button
-	var btn = document.createElement("BUTTON");
-	btn.innerHTML = "DELETE";
-	btn.id = "deleteStyle";
-	btn.type = "button";
-	// btn.onclick = deleteQuestion();
-	container.appendChild(btn);
-	container.appendChild(breakElem);
-	container.appendChild(breakElem);
-
-    return false;
+    buttonWrapper.appendChild(input);
 }
 
 function createLongAnswer() {
 	var container = document.getElementById("addedQuestions");
+	var buttonWrapper = document.createElement("button");
+
+	buttonWrapper.type = "button";
+	buttonWrapper.id = "buttonWrapper";
+
+ 	container.appendChild(buttonWrapper);
+
 	var input = document.createElement("input");
 	var breakElem = document.createElement("br");
 	input.type = "text";
@@ -55,15 +50,8 @@ function createLongAnswer() {
 	input.name = "longAnswer";
 	input.placeholder = "Insert Text for Long Answer";
 	input.required = true;
-	container.appendChild(input);
+	buttonWrapper.appendChild(input);
 	
-	// Delete question button
-	var btn = document.createElement("BUTTON");
-	btn.innerHTML = "DELETE";
-	btn.id = "deleteStyle";
-	btn.type = "button";
-	container.appendChild(btn);
-	// btn.onclick = deleteQuestion();
 	container.appendChild(breakElem);
 	container.appendChild(breakElem);
 
@@ -72,6 +60,13 @@ function createLongAnswer() {
 
 function createMC() {
 	var container = document.getElementById("addedQuestions");
+	var buttonWrapper = document.createElement("button");
+
+	buttonWrapper.type = "button";
+	buttonWrapper.id = "buttonWrapper";
+
+ 	container.appendChild(buttonWrapper);
+
 	var input = document.createElement("input");
 	var breakElem = document.createElement("br");
     input.type = "text";
@@ -79,8 +74,7 @@ function createMC() {
     input.id = "inputStyle";
     input.placeholder = "Insert Multiple Choice Question";
     input.required = true;
-    container.appendChild(input);
-    
+    buttonWrapper.appendChild(input);
 
     var options = document.createElement("input");
     options.type = "text";
@@ -88,17 +82,8 @@ function createMC() {
     options.name = "mcOptions"
     options.placeholder = "enter options as semi-colon-separated list etc: op1; op2; op3";
     options.required = true;
-	container.appendChild(options);
+	buttonWrapper.appendChild(options);
 	
-	// Delete question button
-	var btn = document.createElement("BUTTON");
-	btn.innerHTML = "DELETE";
-	btn.id = "deleteStyle";
-	btn.type = "button";
-	container.appendChild(btn);
-	// btn.onclick = deleteQuestion('addedQuestions', 'input');
-	// btn.onclick(deleteQuestion);
-
     container.appendChild(breakElem);
     container.appendChild(breakElem);
 }
@@ -201,9 +186,6 @@ function createMatching(){
 	var divElem1 = document.createElement("div");
 	var deleteMatch = document.createElement("BUTTON");
 
-	// divElem1.id = "matching";
-	// container.appendChild(divElem1);
-	// container = document.getElementById("matching");
 
 	// Input question prompt
     input.type = "text";
@@ -236,5 +218,12 @@ function createMatching(){
 	container.appendChild(breakElem);
 	container.appendChild(breakElem);
 	container.appendChild(breakElem);
+}
 
+function changeId(elem) {
+	if(elem.id == "buttonWrapperSelected") {
+		elem.id = "buttonWrapper";
+	} else {
+		elem.id = "buttonWrapperSelected";
+	}
 }

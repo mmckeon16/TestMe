@@ -6,7 +6,7 @@
             <div class="col-lg-8 col-md-10 mx-auto">
               <div class="page-heading">
                 <h1>{{results.surveyName}}</h1>
-                <h3>by {{results.creatorName}}</h3>
+                <h3>by {{results.creatorName}} for Answer Key</h3>
               </div>
             </div>
           </div>
@@ -17,18 +17,14 @@
       <div class = "container">
         <div class="test-border">
             <div class="col-lg-8 col-md-10 mx-auto">
-              <form action="/submitRecord" method="POST">
-                <h4> Your Name </h4>
-                <input type="text" id="inputStyle" name = "takerName"> 
-                <br>
-                <br>
+              <form action="/answers" method="POST">
                 <input type="text" name = "creationCode" value ="{{results.creationCode}}" hidden> </input>
                 {{#each results.questionList}}
                   <h4> {{this.question}} </h4>
                   {{setVar "question1" this.question}}
                   {{question1}}
                     {{#iff this.type "==" "shortAnswer"}}
-                      <input type="text" maxlength="50" id="inputStyle" name="{{this.question}}" placeholder="Insert Answer for Short Answer" required=""> </input>
+                      <input type="text" maxlength="50" name="{{this.question}}" placeholder="Insert Answer for Short Answer" required=""> </input>
                     {{/iff}}
                     {{#iff this.type "==" "longAnswer"}}
                       <textarea rows="4" cols="50" maxlength="500" name="{{this.question}}" placeholder="Insert Answer for Long Answer" required=""> </textarea>
@@ -51,6 +47,7 @@
                         <br>
                       {{/each}}
                     {{/iff}}
+                    <br>
                     <br>
                 {{/each}}
                 <input type='submit' value = 'Submit' class="btn btn-primary" />

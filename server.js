@@ -98,7 +98,6 @@ app.post('/send-email', function(req, res) {
 });
 
 app.get('/post', function(req, res){
-
     // make db call to get all info for this
     quiz.getAllFiles(function(err, results){
         if(err){
@@ -123,15 +122,27 @@ app.get('/options', function(req, res) {
       layout: 'choose',
       results: req
   });
-  //res.redirect("/takeOrGrade.html?creationCode="+req.query.creationCode);
 });
 
 app.get("/find", function(req, res) {
   if(req.query.action == "take") {
     res.redirect("/quiz?creationCode="+req.query.creationCode);
   }
-  if(req.query.action = "submissions") {
-    res.redirect("records?creationCode="+req.query.creationCode);
+  console.log(req.query.action);
+  if(req.query.action == "edit") {
+    res.redirect("/edit?creationCode="+req.query.creationCode);
+  }
+
+  if(req.query.action == "submissions") {
+    res.redirect("/records?creationCode="+req.query.creationCode);
+  }
+
+  if(req.query.action == "answer") {
+    res.redirect("/answerKey?creationCode="+req.query.creationCode);
+  }
+
+  if(req.query.action == "grade") {
+    res.redirect("/answerKey?creationCode="+req.query.creationCode);
   }
 
 });
@@ -160,17 +171,47 @@ app.get('/quiz', function(req, res){
 
   // make db call to get all info for this
   quiz.getQuizFromCode(req.query.creationCode, function(err, results){
-      console.log(results);
       if(err){
           res.render("quizInfo", {
-              layout: 'quiz',
-              results: null
+            layout: 'quiz',
+            results: null,
+            helpers: {
+              setVar: function(varName, varValue, opts) {
+                opts.data.root[varName] = varValue;
+              }
+            }
           });
       } else{
           res.render("quizInfo", {
-              layout: 'quiz',
-              results: results
+            layout: 'quiz',
+            results: results,
+            helpers: {
+              setVar: function(varName, varValue, opts) {
+                opts.data.root[varName] = varValue;
+              }
+            }
           });
+       }
+
+  });
+   
+});
+
+app.get('/edit', function(req, res){
+
+  // make db call to get all info for this
+  quiz.getQuizFromCode(req.query.creationCode, function(err, results){
+      if(err){
+        res.render("submitted", {
+          layout: 'quiz',
+          results: null
+        });
+      } else{
+        console.log(results);
+        res.render("submitted", {
+          layout: 'quiz',
+          results: results
+        });
        }
 
   });
@@ -187,12 +228,69 @@ app.get('/submissions', function(req, res){
               results: null
           });
       } else{
-          console.log(results);
           res.render("submissions", {
               layout: 'quiz',
               results: results
           });
        }
+
+  });
+   
+});
+
+app.get('/grade', function(req, res){
+
+  // make db call to get all info for this
+  uploader.getSurveyStatus(req.query.creationCode, function(err, results){
+      if(err){
+        console.log("error");
+        res.redirect(oldIndex.html);
+      } else{
+        console.log("ok have responses");
+        console.log(results);
+        if(results == "survey") {
+          res.redirect("survey.html");
+        } else {
+          quiz.getQuizFromCode(req.query.creationCode, function(err, results){
+            if(err){
+              console.log("error");
+              res.redirect(oldIndex.html);
+            } else{
+              res.render("answerKey", {
+                layout: 'quiz',
+                results: results
+              });
+            }
+          })
+        }
+      }
+  });
+   
+});
+
+app.get('/answerKey', function(req, res){
+
+  // make db call to get all info for this
+  uploader.getSurveyStatus(req.query.creationCode, function(err, results){
+      if(err){
+        res.redirect(oldIndex.html);
+      } else{
+        if(results == "survey") {
+          res.redirect("survey.html");
+        } else {
+          quiz.getQuizFromCode(req.query.creationCode, function(err, results){
+            if(err){
+              console.log("error");
+              res.redirect(oldIndex.html);
+            } else{
+              res.render("answerKey", {
+                layout: 'quiz',
+                results: results
+              });
+            }
+          })
+        }
+      }
 
   });
    
@@ -204,25 +302,12 @@ app.get("/", function(req, res) {
 });
 
 //change this to be plug in access code
-// app.get("/index", function(req, res) {
-//     help.getTop10Posts(function(err, results){
-//         if(err){
-//             res.render("resources", {
-//                 layout: 'index',
-//                 results: null
-//             });
-//         } else{
-//              res.render("resources", {
-//                 layout: 'index',
-//                 results: results
-//             });
-//          }
-
-//     });
-// });
+app.post("/redir", function(req, res) {
+    res.redirect("/quiz?creationCode="+req.body.creationCode);
+});
 
 app.post('/upload', function(req, res) {
-
+  console.log("in upload");
   console.log("Body: " + JSON.stringify(req.body));
   var creatorName = req.body.creatorName;
   var creationCode = uuid.makeUUID();
@@ -230,14 +315,16 @@ app.post('/upload', function(req, res) {
   var userEmail = req.body.Email;
   var questionList = JSON.stringify(questions.createQuestions(req.body));
   var responseList = null;
-  var surveyOption = "SURVEY";//req.body.surveyOption;
+  if(req.body.surveyOption == "on") {
+    //test
+    var surveyOption = "test";
+  } else  {
+    var surveyOption = "survey";
+  }
   var description = req.body.description;
 
   var values = [[creatorName, creationCode, testName, surveyOption, questionList, responseList]];
-  console.log(values);
   var sql = "INSERT INTO theNewSurveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES ?";
-  //var sql = "INSERT INTO theNewSurveyList (creatorName, creationCode, surveyName, surveyOption, questionList, responseList) VALUES("+creatorName+","+creationCode+", "+testName+", "+surveyOption+", "+(questionList)+", "+responseList+")";
-
 
   con.query(sql, [values], function (err, result) {
     if (err) {
@@ -247,7 +334,31 @@ app.post('/upload', function(req, res) {
     console.log("success");
   });
 
-  res.sendFile(path.join(__dirname + '/submit.html'));
+  res.redirect("post");
+});
+
+app.post('/reupload', function(req, res) {
+  var creatorName = req.body.creatorName;
+  var creationCode = req.body.creationCode;
+  var testName = req.body.testName;
+  var userEmail = req.body.Email;
+  var surveyOption = req.body.surveyOption;
+  var questionList = JSON.stringify(questions.createQuestions(req.body));
+  var responseList = null;
+  var surveyOption = req.body.surveyOption;
+  var description = req.body.description;
+
+  var sql = 'REPLACE INTO theNewSurveyList SET creatorName="'+creatorName+'", surveyName="'+testName+'", surveyOption="'+surveyOption+'", questionList=?,creationCode="'+ creationCode+'"';
+
+  con.query(sql, [questionList], function (err, result) {
+    if (err) {
+      console.log(err.sql);
+      throw err;
+    }
+    console.log("success");
+  });
+
+  res.redirect("post");
 });
 
 app.post('/submitRecord', function(req, res) {
@@ -257,27 +368,46 @@ app.post('/submitRecord', function(req, res) {
   var creationCode = req.body.creationCode;
   var responseList = JSON.stringify(req.body);
   var surveyName = null;
-  var surveyOption = "SURVEY";
+  var surveyOption = req.body.surveyOption;
 
-  uploader.getSurveyName(creationCode, function(err, results) {
+  uploader.getSurveyNameAndStatus(creationCode, function(err, results) {
     if(!err){
-      surveyName = results;
+      surveyName = results.surveyName;
+      surveyOption = results.surveyOption;
     }
-      console.log(surveyName);
 
-      var values = [[takerName, creationCode, surveyName, surveyOption, responseList]];
-      var sql = "INSERT INTO responseList2 (takerName, creationCode, surveyName, surveyOption, responseList) VALUES ?";
-      con.query(sql, [values], function (err, result) {
-        if (err) {
-          console.log(err.sql);
-          throw err;
-        }
-        console.log("success");
-      });
+    var values = [[takerName, creationCode, surveyName, surveyOption, responseList]];
+    var sql = "INSERT INTO responseList2 (takerName, creationCode, surveyName, surveyOption, responseList) VALUES ?";
+    con.query(sql, [values], function (err, result) {
+      if (err) {
+        console.log(err.sql);
+        throw err;
+      }
+      console.log("success");
+    });
 
     res.redirect("records?creationCode="+creationCode);
   });
   
+});
+
+app.post('/answers', function(req, res) {
+
+  console.log(req.body);
+  var creationCode = req.body.creationCode;
+  var responseList = JSON.stringify(req.body);
+
+  var values = [[responseList]];
+  var sql = "UPDATE theNewSurveyList SET responseList=? where creationCode='"+creationCode+"'";
+  con.query(sql, [values], function (err, result) {
+    if (err) {
+      console.log(err.sql);
+      throw err;
+    }
+    console.log("success");
+  });
+
+  res.redirect("records?creationCode="+creationCode);
 });
 
 app.get('*', function(req, res) {

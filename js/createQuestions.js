@@ -30,8 +30,6 @@ module.exports = {
 		}
 
 		//get ranking
-		console.log("next line is ranking options");
-		console.log(body.rankingOptions);
 		var rankingQuestions = body.ranking;
 		var rankingOptions = body.rankingOptions;
 		if(typeof rankingQuestions != 'undefined') {
@@ -76,10 +74,19 @@ function makeMCRanking(questions, questionsToAdd, type, options) {
 	if(typeof questionsToAdd  === 'string') {
 		//then only one to add
 		optionsObj = options.split(";");
+		if(optionsObj.length == 1) {
+				optionsObj = options.split(",");
+				console.log(optionsObj);
+			}
 		newQuestions.push({"type": type, "answer": "", "question": questionsToAdd, "options": optionsObj});
 	} else {
 		for (index; index < questionsToAdd.length; index += 1) {
 			optionsObj = options[index].split(";");
+			console.log("length"+optionsObj.length);
+			if(optionsObj.length == 1) {
+				console.log("splitting by commas");
+				optionsObj = options[index].split(",");
+			}
 			newQuestions.push({"type": type, "answer": "", "question": questionsToAdd[index], "options": optionsObj});
 		}
 	}

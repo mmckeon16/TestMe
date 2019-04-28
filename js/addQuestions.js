@@ -33,13 +33,7 @@ function createShortAnswer() {
 
     buttonContainer.appendChild(input);
 
-	// Delete question button
-	var btn = document.createElement("BUTTON");
-	btn.innerHTML = "DELETE";
-	btn.id = "deleteStyle";
-	btn.type = "button";
-	// btn.onclick = deleteQuestion();
-	container.appendChild(btn);
+
 	container.appendChild(breakElem);
 	container.appendChild(breakElem);
 
@@ -56,14 +50,7 @@ function createLongAnswer() {
 	input.placeholder = "Insert Text for Long Answer";
 	input.required = true;
 	container.appendChild(input);
-	
-	// Delete question button
-	var btn = document.createElement("BUTTON");
-	btn.innerHTML = "DELETE";
-	btn.id = "deleteStyle";
-	btn.type = "button";
-	container.appendChild(btn);
-	// btn.onclick = deleteQuestion();
+
 	container.appendChild(breakElem);
 	container.appendChild(breakElem);
 
@@ -90,14 +77,14 @@ function createMC() {
     options.required = true;
 	container.appendChild(options);
 	
-	// Delete question button
-	var btn = document.createElement("BUTTON");
-	btn.innerHTML = "DELETE";
-	btn.id = "deleteStyle";
-	btn.type = "button";
-	container.appendChild(btn);
-	// btn.onclick = deleteQuestion('addedQuestions', 'input');
-	// btn.onclick(deleteQuestion);
+	// // Delete question button
+	// var btn = document.createElement("BUTTON");
+	// btn.innerHTML = "DELETE";
+	// btn.id = "deleteStyle";
+	// btn.type = "button";
+	// container.appendChild(btn);
+	// // btn.onclick = deleteQuestion('addedQuestions', 'input');
+	// // btn.onclick(deleteQuestion);
 
     container.appendChild(breakElem);
     container.appendChild(breakElem);

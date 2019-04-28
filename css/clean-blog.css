@@ -659,11 +659,16 @@ select{
 
 #deleteStyle{
   color: #fff;
-  font-weight: 600;
+  font-weight: 800;
   background-color: rgb(190, 194, 203);
   border-color: #A22347;
-  width: 20%;
+  width: 45%;
+  height: 40px;
   margin: 7px;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 16px;
 }
 
 .getCodeStyle {

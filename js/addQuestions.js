@@ -40,6 +40,7 @@ function createLongAnswer() {
 
 	buttonWrapper.type = "button";
 	buttonWrapper.id = "buttonWrapper";
+	buttonWrapper.onclick = function() { changeId(this); };
 
  	container.appendChild(buttonWrapper);
 
@@ -64,6 +65,7 @@ function createMC() {
 
 	buttonWrapper.type = "button";
 	buttonWrapper.id = "buttonWrapper";
+	buttonWrapper.onclick = function() { changeId(this); };
 
  	container.appendChild(buttonWrapper);
 
@@ -90,6 +92,14 @@ function createMC() {
 
 function createTrueFalse() {
 	var container = document.getElementById("addedQuestions");
+	var buttonWrapper = document.createElement("button");
+
+	buttonWrapper.type = "button";
+	buttonWrapper.id = "buttonWrapper";
+	buttonWrapper.onclick = function() { changeId(this); };
+
+ 	container.appendChild(buttonWrapper);
+
 	var input = document.createElement("input");
 	var breakElem = document.createElement("br");
     input.type = "text";
@@ -97,22 +107,22 @@ function createTrueFalse() {
     input.id = "inputStyle";
     input.placeholder = "Insert True False Question";
     input.required = true;
-	container.appendChild(input);
+	buttonWrapper.appendChild(input);
 
-	// Delete question button
-	var btn = document.createElement("BUTTON");
-	btn.innerHTML = "DELETE";
-	btn.id = "deleteStyle";
-	btn.type = "button";
-	// btn.onclick = deleteQuestion();
-	container.appendChild(btn);
-	// btn.onclick(deleteQuestion);
     container.appendChild(breakElem);
     container.appendChild(breakElem);
 }
 
 function createRanking(){
 	var container = document.getElementById("addedQuestions");
+	var buttonWrapper = document.createElement("button");
+
+	buttonWrapper.type = "button";
+	buttonWrapper.id = "buttonWrapper";
+	buttonWrapper.onclick = function() { changeId(this); };
+
+ 	container.appendChild(buttonWrapper);
+
 	var input = document.createElement("input");
 	var breakElem = document.createElement("br");
     input.type = "text";
@@ -120,7 +130,7 @@ function createRanking(){
     input.id = "inputStyle";
     input.placeholder = "Insert Ranking Question";
     input.required = true;
-    container.appendChild(input);
+    buttonWrapper.appendChild(input);
 
     var options = document.createElement("input");
     options.type = "text";
@@ -128,16 +138,7 @@ function createRanking(){
     options.id = "inputStyle";
     options.placeholder = "enter options as semi-colon-separated list etc: op1; op2; op3";
     options.required = true;
-	container.appendChild(options);
-	
-	// Delete question button
-	var btn = document.createElement("BUTTON");
-	btn.innerHTML = "DELETE";
-	btn.type = "button";
-	btn.id = "deleteStyle";
-	// btn.onclick = deleteQuestion();
-	container.appendChild(btn);
-	// btn.onclick(deleteQuestion);
+	buttonWrapper.appendChild(options);
 
     container.appendChild(breakElem);
     container.appendChild(breakElem);

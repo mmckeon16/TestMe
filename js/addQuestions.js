@@ -14,14 +14,24 @@ function deleteQuestion(parent, child){
 
 function createShortAnswer() {
 	var container = document.getElementById("addedQuestions");
+	var buttonWrapper = document.createElement("button");
+
+	buttonWrapper.type = "button";
+	buttonWrapper.id = "buttonWrapper";
+
+ 	container.appendChild(buttonWrapper);
+	var buttonContainer = document.getElementById("buttonWrapper");
+
 	var input = document.createElement("input");
 	var breakElem = document.createElement("br");
+
     input.type = "text";
     input.name = "shortAnswer";
     input.id = "inputStyle";
     input.placeholder = "Insert Text for Short Answer";
     input.required = true;
-    container.appendChild(input);
+
+    buttonContainer.appendChild(input);
 
 	// Delete question button
 	var btn = document.createElement("BUTTON");

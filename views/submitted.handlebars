@@ -49,24 +49,37 @@
                   {{#each results.questionList}}
                     {{question1}}
                       {{#iff this.type "==" "shortAnswer"}}
-                        <input type="text" name="shortAnswer" id="inputStyle" value="{{this.question}}" required="">
+                        <button type="button" id="buttonWrapper" onclick="changeId(this)">
+                          <input type="text" name="shortAnswer" id="inputStyle" value="{{this.question}}" required="">
+                          <br>
+                        </button>
                       {{/iff}}
                       {{#iff this.type "==" "longAnswer"}}
-                        <input type="text" id="inputStyle" name="longAnswer" value="{{this.question}}" required="">
+                        <button type="button" id="buttonWrapper" onclick="changeId(this)">
+                          <input type="text" id="inputStyle" name="longAnswer" value="{{this.question}}" required="">
+                          <br>
+                        </button>
                       {{/iff}}
                       {{#iff this.type "==" "multipleChoice"}}
-                        <input type="text" name="multipleChoice" id="inputStyle" value="{{this.question}}" required="">
-                        <input type="text" id="inputStyle" name="mcOptions" value="{{this.options}}" required="">
+                        <button type="button" id="buttonWrapper" onclick="changeId(this)">
+                          <input type="text" name="multipleChoice" id="inputStyle" value="{{this.question}}" required="">
+                          <input type="text" id="inputStyle" name="mcOptions" value="{{this.options}}" required="">
+                          <br>
+                        </button>
                       {{/iff}}
                       {{#iff this.type "==" "trueFalse"}}
-                        <input type="text" name="trueFalse" id="inputStyle" value="{{this.question}}" required="">
+                        <button type="button" id="buttonWrapper" onclick="changeId(this)">
+                          <input type="text" name="trueFalse" id="inputStyle" value="{{this.question}}" required="">
+                          <br>
+                        </button>
                       {{/iff}}
                       {{#iff this.type "==" "ranking"}}
-                        <input type="text" name="ranking" id="inputStyle" value="{{this.question}}" required="">
-                        <input type="text" name="rankingOptions" id="inputStyle" value="{{this.options}}" required="">
+                        <button type="button" id="buttonWrapper" onclick="changeId(this)">
+                          <input type="text" name="ranking" id="inputStyle" value="{{this.question}}" required="">
+                          <input type="text" name="rankingOptions" id="inputStyle" value="{{this.options}}" required="">
+                          <br>
+                        </button>
                       {{/iff}}
-                      <br>
-                      <br>
                   {{/each}}
                 </div>
               </div>
@@ -93,7 +106,11 @@
               <button type = "button" class = "question" id = "matchAns" onclick = "createMatching()"> Add Matching Question </button>
             </div> -->
 
-            <!--File input -->
+            <div>
+              <button type = "button" class = "question" id = "deleteStyle" onclick = "deleteQuestion()"> Delete </button>
+            </div>
+
+            <!--Submit quiz -->
             <div class="control-group">
                 
                 <input type='submit' value = 'Submit' class="btn btn-primary" />

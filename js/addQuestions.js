@@ -32,6 +32,8 @@ function createShortAnswer() {
     input.required = true;
 
     buttonWrapper.appendChild(input);
+
+    buttonWrapper.appendChild(breakElem);
 }
 
 function createLongAnswer() {
@@ -42,8 +44,6 @@ function createLongAnswer() {
 	buttonWrapper.id = "buttonWrapper";
 	buttonWrapper.onclick = function() { changeId(this); };
 
- 	container.appendChild(buttonWrapper);
-
 	var input = document.createElement("input");
 	var breakElem = document.createElement("br");
 	input.type = "text";
@@ -52,10 +52,8 @@ function createLongAnswer() {
 	input.placeholder = "Insert Text for Long Answer";
 	input.required = true;
 	buttonWrapper.appendChild(input);
-	
-	container.appendChild(breakElem);
-	container.appendChild(breakElem);
-
+	buttonWrapper.appendChild(breakElem);
+	container.appendChild(buttonWrapper);	
 }
 
 
@@ -86,8 +84,7 @@ function createMC() {
     options.required = true;
 	buttonWrapper.appendChild(options);
 	
-    container.appendChild(breakElem);
-    container.appendChild(breakElem);
+    buttonWrapper.appendChild(breakElem);
 }
 
 function createTrueFalse() {
@@ -109,8 +106,7 @@ function createTrueFalse() {
     input.required = true;
 	buttonWrapper.appendChild(input);
 
-    container.appendChild(breakElem);
-    container.appendChild(breakElem);
+    buttonWrapper.appendChild(breakElem);
 }
 
 function createRanking(){
@@ -140,8 +136,7 @@ function createRanking(){
     options.required = true;
 	buttonWrapper.appendChild(options);
 
-    container.appendChild(breakElem);
-    container.appendChild(breakElem);
+    buttonWrapper.appendChild(breakElem);
 }
 
 function makeMatch(){
@@ -172,8 +167,7 @@ function makeMatch(){
 	container.appendChild(option);
 
 	container.appendChild(deleteMatch);
-	container.appendChild(breakElem);
-	container.appendChild(breakElem);
+	// container.appendChild(breakElem);
 
 
 }
@@ -227,4 +221,8 @@ function changeId(elem) {
 	} else {
 		elem.id = "buttonWrapperSelected";
 	}
+}
+
+function deleteQuestion() {
+	document.getElementById("buttonWrapperSelected").remove();
 }
